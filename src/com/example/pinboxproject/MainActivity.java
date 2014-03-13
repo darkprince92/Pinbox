@@ -1,10 +1,10 @@
 package com.example.pinboxproject;
 
-import com.origamilabs.library.views.StaggeredGridView;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import com.origamilabs.library.views.StaggeredGridView;
 
 public class MainActivity extends NavigationActivity {
 	
@@ -26,6 +26,17 @@ public class MainActivity extends NavigationActivity {
 		StaggeredGridView staggeredGrid = (StaggeredGridView)findViewById(R.id.staggeredGridView1);
 		adapter = new StaggeredAdapter(this, screenWidth - 40, staggeredGrid.getColumnCount());
 		staggeredGrid.setAdapter(adapter);
+		
+		Button buttonSearch = (Button)findViewById(R.id.home_button_search);
+		buttonSearch.setOnClickListener(new Button.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+				MainActivity.this.startActivity(intent);
+			}
+		});
 		
 	}
 

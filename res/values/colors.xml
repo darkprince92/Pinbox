@@ -4,5 +4,9 @@
     <color name="button_blue">#02B5E5</color>
     <color name="button_blue_pressed">#C002B5E5</color>
     <color name="white">#FFFFFF</color>
+    <color name="app_grey">#F1F1F1</color>
+    <color name="text_primary">#6E6E6E</color>
+    <color name="text_secondary">#A5A5A5</color>
+    <color name="text_tertiary">#B5B5B5</color>
     
 </resources>

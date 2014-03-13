@@ -31,7 +31,7 @@ public class StaggeredAdapter extends BaseAdapter{
 		imageThumbList = new ArrayList<Bitmap>();
 		for(i=0;i<mThumbIds.length;i++){
 			Bitmap image = BitmapFactory.decodeResource(activity.getResources(), mThumbIds[i]);
-			imageThumbList.add(AppUtils.CreateThumbnail(image, screenWidth/columnNum)) ;
+			imageThumbList.add(ThumbnailConverter.CreateThumbnail(image, screenWidth/columnNum)) ;
 		}
 	}
 
@@ -96,7 +96,7 @@ public class StaggeredAdapter extends BaseAdapter{
             R.drawable.sample_7
     };
     
-    static class ViewHolder{
+    private static class ViewHolder{
     	ImageView imageView;
     	TextView textTitle;
     	TextView textCategory;

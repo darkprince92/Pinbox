@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="2dp" >
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pin"
+            android:id="@+id/search_button_pins"
+            android:layout_weight="1"
+            android:background="@color/app_grey" />
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Albums"
+            android:id="@+id/search_button_albums"
+            android:layout_weight="1"            
+            android:background="@color/app_grey" />
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Users"
+            android:id="@+id/search_button_users"
+            android:layout_weight="1"
+            android:background="@color/app_grey" />
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Map"
+            android:id="@+id/search_button_map"
+            android:layout_weight="1"
+            android:background="@color/app_grey" />
+        
+    </LinearLayout>
+    
+    <android.support.v4.view.ViewPager
+	    android:id="@+id/search_pager"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+
+</LinearLayout>
