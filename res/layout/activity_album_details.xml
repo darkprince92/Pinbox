@@ -4,14 +4,14 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".UserProfileActivity" >
+        tools:context=".AlbumDetailsActivity" >
     <!-- The main content view -->
     <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             
-        <include layout="@layout/user_profile_layout"/>
+        <include layout="@layout/album_details_layout"/>
             
     </FrameLayout>
     <!-- The navigation drawer -->
@@ -25,4 +25,3 @@
             android:background="#FFFFFF"/>     
          
 </android.support.v4.widget.DrawerLayout>
-

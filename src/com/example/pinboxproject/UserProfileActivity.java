@@ -1,28 +1,30 @@
 package com.example.pinboxproject;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import java.util.ArrayList;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.widget.Button;
+
 
 public class UserProfileActivity extends NavigationActivity {
-
-	/*@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_user_profile);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_profile, menu);
-		return true;
-	}*/
+	
+	private Button buttonSelectPins;
+	private Button buttonSelectAlbums;
+	private ViewPager pager;
+	private PagerAdapter pagerAdapter;
 
 	@Override
 	protected void createView() {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_user_profile);
+		
+		pager = (ViewPager)findViewById(R.id.profile_pager);
+		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+		fragments.add(new ProfilePinsFragment(this));
+		fragments.add(new ProfileAlbumsFragment(this));
+		pagerAdapter = new PagerAdapter(getSupportFragmentManager(), this, fragments);
+		pager.setAdapter(pagerAdapter);
 	}
 
 	@Override

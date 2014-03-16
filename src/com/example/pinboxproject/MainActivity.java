@@ -33,10 +33,13 @@ public class MainActivity extends NavigationActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+				//Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+				Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);		
+				
 				MainActivity.this.startActivity(intent);
 			}
 		});
+	
 		
 		Button buttonMap = (Button)findViewById(R.id.home_button_map);
 		buttonMap.setOnClickListener(new Button.OnClickListener() {

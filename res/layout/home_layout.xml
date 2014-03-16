@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     xmlns:staggered="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res/com.example.staggeredviewtest" >
+    xmlns:app="http://schemas.android.com/apk/res/com.example.pinboxproject" >
     
     <Button android:layout_width="match_parent"
         android:layout_height="wrap_content"
