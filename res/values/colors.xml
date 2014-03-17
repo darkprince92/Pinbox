@@ -8,5 +8,8 @@
     <color name="text_primary">#6E6E6E</color>
     <color name="text_secondary">#A5A5A5</color>
     <color name="text_tertiary">#B5B5B5</color>
+    <color name="divider_color">#858585</color>
+    <color name="red">#FF5D5D</color>
+    <color name="blue">#04B5dB</color>
     
 </resources>

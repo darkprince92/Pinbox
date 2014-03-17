@@ -16,7 +16,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraBearing=0x7f010001;
+        public static final int cameraBearing=0x7f010004;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -24,7 +24,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTargetLat=0x7f010002;
+        public static final int cameraTargetLat=0x7f010005;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -32,7 +32,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTargetLng=0x7f010003;
+        public static final int cameraTargetLng=0x7f010006;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -40,7 +40,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraTilt=0x7f010004;
+        public static final int cameraTilt=0x7f010007;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -48,7 +48,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int cameraZoom=0x7f010005;
+        public static final int cameraZoom=0x7f010008;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -56,7 +56,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int drawSelectorOnTop=0x7f01000e;
+        public static final int drawSelectorOnTop=0x7f010000;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -66,7 +66,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int itemMargin=0x7f010010;
+        public static final int itemMargin=0x7f010002;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -80,7 +80,7 @@ containing a value of this type.
 <tr><td><code>hybrid</code></td><td>4</td><td></td></tr>
 </table>
          */
-        public static final int mapType=0x7f010000;
+        public static final int mapType=0x7f010003;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -88,7 +88,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int numColumns=0x7f01000f;
+        public static final int numColumns=0x7f010001;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -96,7 +96,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiCompass=0x7f010006;
+        public static final int uiCompass=0x7f010009;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -104,7 +104,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiRotateGestures=0x7f010007;
+        public static final int uiRotateGestures=0x7f01000a;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -112,7 +112,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiScrollGestures=0x7f010008;
+        public static final int uiScrollGestures=0x7f01000b;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -120,7 +120,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiTiltGestures=0x7f010009;
+        public static final int uiTiltGestures=0x7f01000c;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -128,7 +128,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiZoomControls=0x7f01000a;
+        public static final int uiZoomControls=0x7f01000d;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -136,7 +136,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int uiZoomGestures=0x7f01000b;
+        public static final int uiZoomGestures=0x7f01000e;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -144,7 +144,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int useViewLifecycle=0x7f01000c;
+        public static final int useViewLifecycle=0x7f01000f;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -152,10 +152,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int zOrderOnTop=0x7f01000d;
+        public static final int zOrderOnTop=0x7f010010;
     }
     public static final class color {
         public static final int app_grey=0x7f04000d;
+        public static final int blue=0x7f040013;
         public static final int button_blue=0x7f04000a;
         public static final int button_blue_pressed=0x7f04000b;
         public static final int common_action_bar_splitter=0x7f040009;
@@ -170,8 +171,10 @@ containing a value of this type.
         public static final int common_signin_btn_light_text_disabled=0x7f040006;
         public static final int common_signin_btn_light_text_focused=0x7f040007;
         public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f040011;
-        public static final int common_signin_btn_text_light=0x7f040012;
+        public static final int common_signin_btn_text_dark=0x7f040014;
+        public static final int common_signin_btn_text_light=0x7f040015;
+        public static final int divider_color=0x7f040011;
+        public static final int red=0x7f040012;
         public static final int text_primary=0x7f04000e;
         public static final int text_secondary=0x7f04000f;
         public static final int text_tertiary=0x7f040010;
@@ -215,95 +218,132 @@ containing a value of this type.
         public static final int common_signin_btn_text_normal_light=0x7f020018;
         public static final int common_signin_btn_text_pressed_dark=0x7f020019;
         public static final int common_signin_btn_text_pressed_light=0x7f02001a;
-        public static final int ic_launcher=0x7f02001b;
-        public static final int ic_navigation_drawer=0x7f02001c;
-        public static final int login=0x7f02001d;
-        public static final int sample_0=0x7f02001e;
-        public static final int sample_1=0x7f02001f;
-        public static final int sample_2=0x7f020020;
-        public static final int sample_3=0x7f020021;
-        public static final int sample_4=0x7f020022;
-        public static final int sample_5=0x7f020023;
-        public static final int sample_6=0x7f020024;
-        public static final int sample_7=0x7f020025;
+        public static final int ic_add=0x7f02001b;
+        public static final int ic_launcher=0x7f02001c;
+        public static final int ic_navigation_drawer=0x7f02001d;
+        public static final int login=0x7f02001e;
+        public static final int sample_0=0x7f02001f;
+        public static final int sample_1=0x7f020020;
+        public static final int sample_2=0x7f020021;
+        public static final int sample_3=0x7f020022;
+        public static final int sample_4=0x7f020023;
+        public static final int sample_5=0x7f020024;
+        public static final int sample_6=0x7f020025;
+        public static final int sample_7=0x7f020026;
     }
     public static final class id {
-        public static final int action_settings=0x7f050034;
-        public static final int content_frame=0x7f05000a;
-        public static final int drawer_layout=0x7f050009;
-        public static final int home_button_add_pin=0x7f05001b;
-        public static final int home_button_map=0x7f05001c;
-        public static final int home_button_search=0x7f05001a;
+        public static final int action_settings=0x7f050048;
+        public static final int album_grid_image=0x7f05001e;
+        public static final int album_staggeredGridView=0x7f05000d;
+        public static final int album_text_description=0x7f05000c;
+        public static final int content_frame=0x7f050006;
+        public static final int drawer_layout=0x7f050005;
+        public static final int home_button_add_pin=0x7f050020;
+        public static final int home_button_map=0x7f050021;
+        public static final int home_button_search=0x7f05001f;
+        public static final int horizontal_list=0x7f050029;
         public static final int hybrid=0x7f050004;
-        public static final int image_item=0x7f050031;
-        public static final int image_nav_icon=0x7f05000c;
-        public static final int left_drawer=0x7f05000b;
-        public static final int login_button_login=0x7f050008;
-        public static final int login_edittext_password=0x7f050006;
-        public static final int login_edittext_username=0x7f050005;
-        public static final int login_text_signup=0x7f050007;
+        public static final int image_item=0x7f05003f;
+        public static final int image_nav_icon=0x7f05000e;
+        public static final int left_drawer=0x7f050007;
+        public static final int login_button_login=0x7f05000b;
+        public static final int login_edittext_password=0x7f050009;
+        public static final int login_edittext_username=0x7f050008;
+        public static final int login_text_signup=0x7f05000a;
+        public static final int map_activity_fragment=0x7f050023;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
+        public static final int pin_button_add_tag=0x7f05002a;
+        public static final int pin_details_map_fragment=0x7f050024;
+        public static final int pin_text_category=0x7f050027;
+        public static final int pin_text_comment=0x7f05002b;
+        public static final int pin_text_title=0x7f050025;
+        public static final int pin_text_user=0x7f050028;
+        public static final int pin_text_vote=0x7f050026;
+        public static final int profile_button_album=0x7f050046;
+        public static final int profile_button_pin=0x7f050045;
+        public static final int profile_grid_album=0x7f050010;
+        public static final int profile_image=0x7f050042;
+        public static final int profile_pager=0x7f050047;
+        public static final int profile_staggeredGridView=0x7f050011;
+        public static final int profile_text_email=0x7f050044;
+        public static final int profile_text_username=0x7f050043;
         public static final int satellite=0x7f050002;
-        public static final int search_album_image=0x7f05001e;
-        public static final int search_album_list=0x7f050010;
-        public static final int search_album_spinner_sort=0x7f05000f;
-        public static final int search_album_text_address=0x7f050020;
-        public static final int search_album_text_comment=0x7f050021;
-        public static final int search_album_text_rating=0x7f050022;
-        public static final int search_album_text_title=0x7f05001f;
-        public static final int search_button_albums=0x7f050024;
-        public static final int search_button_map=0x7f050026;
-        public static final int search_button_pins=0x7f050023;
-        public static final int search_button_users=0x7f050025;
-        public static final int search_map_fragment=0x7f050013;
-        public static final int search_map_spinner_category=0x7f050012;
-        public static final int search_map_spinner_location=0x7f050011;
-        public static final int search_pager=0x7f050027;
-        public static final int search_pin_image=0x7f050028;
-        public static final int search_pin_list=0x7f050017;
-        public static final int search_pin_spinner_category=0x7f050016;
-        public static final int search_pin_spinner_sort=0x7f050014;
-        public static final int search_pin_text_address=0x7f05002a;
-        public static final int search_pin_text_category=0x7f05002d;
-        public static final int search_pin_text_comment=0x7f05002b;
-        public static final int search_pin_text_rating=0x7f05002c;
-        public static final int search_pin_text_title=0x7f050029;
-        public static final int search_user_image=0x7f05002e;
-        public static final int search_user_list=0x7f050019;
-        public static final int search_user_spinner_location=0x7f050018;
-        public static final int search_user_text_email=0x7f050030;
-        public static final int search_user_text_name=0x7f05002f;
-        public static final int staggeredGridView1=0x7f05001d;
+        public static final int search_album_image=0x7f05002c;
+        public static final int search_album_list=0x7f050014;
+        public static final int search_album_spinner_sort=0x7f050013;
+        public static final int search_album_text_address=0x7f05002e;
+        public static final int search_album_text_comment=0x7f05002f;
+        public static final int search_album_text_rating=0x7f050030;
+        public static final int search_album_text_title=0x7f05002d;
+        public static final int search_button_albums=0x7f050032;
+        public static final int search_button_map=0x7f050034;
+        public static final int search_button_pins=0x7f050031;
+        public static final int search_button_users=0x7f050033;
+        public static final int search_map_fragment=0x7f050017;
+        public static final int search_map_spinner_category=0x7f050016;
+        public static final int search_map_spinner_location=0x7f050015;
+        public static final int search_pager=0x7f050035;
+        public static final int search_pin_image=0x7f050036;
+        public static final int search_pin_list=0x7f05001b;
+        public static final int search_pin_spinner_category=0x7f05001a;
+        public static final int search_pin_spinner_sort=0x7f050018;
+        public static final int search_pin_text_address=0x7f050038;
+        public static final int search_pin_text_category=0x7f05003b;
+        public static final int search_pin_text_comment=0x7f050039;
+        public static final int search_pin_text_rating=0x7f05003a;
+        public static final int search_pin_text_title=0x7f050037;
+        public static final int search_user_image=0x7f05003c;
+        public static final int search_user_list=0x7f05001d;
+        public static final int search_user_spinner_location=0x7f05001c;
+        public static final int search_user_text_email=0x7f05003e;
+        public static final int search_user_text_name=0x7f05003d;
+        public static final int staggeredGridView1=0x7f050022;
         public static final int terrain=0x7f050003;
-        public static final int text_category_select=0x7f050015;
-        public static final int text_item_category=0x7f050033;
-        public static final int text_item_title=0x7f050032;
-        public static final int text_nav_title=0x7f05000d;
-        public static final int text_sort_by=0x7f05000e;
+        public static final int text_category_select=0x7f050019;
+        public static final int text_item_category=0x7f050041;
+        public static final int text_item_title=0x7f050040;
+        public static final int text_nav_title=0x7f05000f;
+        public static final int text_sort_by=0x7f050012;
     }
     public static final class layout {
-        public static final int activity_login=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_navigation=0x7f030002;
-        public static final int activity_search=0x7f030003;
-        public static final int drawer_item=0x7f030004;
-        public static final int fragment_search_album=0x7f030005;
-        public static final int fragment_search_map=0x7f030006;
-        public static final int fragment_search_pin_list=0x7f030007;
-        public static final int fragment_search_user=0x7f030008;
-        public static final int home_layout=0x7f030009;
-        public static final int search_album_item=0x7f03000a;
-        public static final int search_page_layout=0x7f03000b;
-        public static final int search_pin_item=0x7f03000c;
-        public static final int search_user_item=0x7f03000d;
-        public static final int staggered_item=0x7f03000e;
+        public static final int activity_album_details=0x7f030000;
+        public static final int activity_login=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_map=0x7f030003;
+        public static final int activity_navigation=0x7f030004;
+        public static final int activity_pin_details=0x7f030005;
+        public static final int activity_search=0x7f030006;
+        public static final int activity_user_profile=0x7f030007;
+        public static final int album_details_layout=0x7f030008;
+        public static final int divider_line=0x7f030009;
+        public static final int drawer_item=0x7f03000a;
+        public static final int fragment_profile_albums=0x7f03000b;
+        public static final int fragment_profile_pins=0x7f03000c;
+        public static final int fragment_search_album=0x7f03000d;
+        public static final int fragment_search_map=0x7f03000e;
+        public static final int fragment_search_pin_list=0x7f03000f;
+        public static final int fragment_search_user=0x7f030010;
+        public static final int grid_item=0x7f030011;
+        public static final int home_layout=0x7f030012;
+        public static final int map_layout=0x7f030013;
+        public static final int pin_details_layout=0x7f030014;
+        public static final int search_album_item=0x7f030015;
+        public static final int search_page_layout=0x7f030016;
+        public static final int search_pin_item=0x7f030017;
+        public static final int search_user_item=0x7f030018;
+        public static final int staggered_item=0x7f030019;
+        public static final int user_profile_layout=0x7f03001a;
     }
     public static final class menu {
-        public static final int login=0x7f090000;
-        public static final int main=0x7f090001;
-        public static final int navigation=0x7f090002;
-        public static final int search=0x7f090003;
+        public static final int album_details=0x7f090000;
+        public static final int login=0x7f090001;
+        public static final int main=0x7f090002;
+        public static final int map=0x7f090003;
+        public static final int navigation=0x7f090004;
+        public static final int pin_details=0x7f090005;
+        public static final int search=0x7f090006;
+        public static final int user_profile=0x7f090007;
     }
     public static final class string {
         public static final int action_settings=0x7f060016;
@@ -317,6 +357,7 @@ containing a value of this type.
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
         public static final int auth_client_requested_by_msg=0x7f060011;
+        public static final int comment_lorem=0x7f060020;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -386,9 +427,14 @@ containing a value of this type.
         public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
         public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
         public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
+        public static final int lorem_ipsum=0x7f06001f;
+        public static final int title_activity_album_details=0x7f060022;
         public static final int title_activity_login=0x7f06001b;
+        public static final int title_activity_map=0x7f06001d;
         public static final int title_activity_navigation=0x7f060018;
+        public static final int title_activity_pin_details=0x7f06001e;
         public static final int title_activity_search=0x7f06001c;
+        public static final int title_activity_user_profile=0x7f060021;
     }
     public static final class style {
         /** 
@@ -456,10 +502,10 @@ containing a value of this type.
            @see #MapAttrs_zOrderOnTop
          */
         public static final int[] MapAttrs = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
-            0x7f01000c, 0x7f01000d
+            0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006,
+            0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a,
+            0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e,
+            0x7f01000f, 0x7f010010
         };
         /**
           <p>This symbol is the offset where the {@link com.example.pinboxproject.R.attr#cameraBearing}
@@ -678,7 +724,7 @@ containing a value of this type.
            @see #StaggeredGridView_numColumns
          */
         public static final int[] StaggeredGridView = {
-            0x7f01000e, 0x7f01000f, 0x7f010010
+            0x7f010000, 0x7f010001, 0x7f010002
         };
         /**
           <p>This symbol is the offset where the {@link com.example.pinboxproject.R.attr#drawSelectorOnTop}

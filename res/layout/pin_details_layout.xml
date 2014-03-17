@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <fragment android:id="@+id/pin_details_map_fragment"
+	   android:layout_width="match_parent"
+	   android:layout_height="150dp"
+	   class="com.google.android.gms.maps.MapFragment"/>
+       
+    <include layout="@layout/divider_line"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin" >
+        
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pin Title"
+                android:textSize="24dp"
+                android:id="@+id/pin_text_title"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/text_primary" />
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vote count"
+                android:textSize="24dp"
+                android:id="@+id/pin_text_vote"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/text_primary" />
+            
+        </RelativeLayout>
+        
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textSize="20dp"
+                android:id="@+id/pin_text_category"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/text_secondary" />
+            
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By: shourav.nath"
+                android:textSize="20dp"
+                android:id="@+id/pin_text_user"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/text_secondary" />
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+    <include layout="@layout/divider_line"/>
+    
+    <HorizontalScrollView android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/app_grey"
+        android:id="@+id/horizontal_list">
+        
+        <TextView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="No photos available"/>
+        
+    </HorizontalScrollView>
+    
+    <include layout="@layout/divider_line"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical" >
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="@color/text_secondary"/>
+        
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_primary"
+            android:maxLines="6"
+            android:text="@string/lorem_ipsum" />
+        
+    </LinearLayout>
+    
+    <include layout="@layout/divider_line"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tags: "
+            android:textColor="@color/text_secondary"/>
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="food, pizza, restaurant"
+            android:textColor="@color/text_secondary"/>
+        
+        <ImageButton android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/pin_button_add_tag"
+            android:src="@drawable/ic_add"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"/>
+        
+    </LinearLayout>
+    
+    <include layout="@layout/divider_line"/>
+    
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin" >
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Report Pin"
+            android:textSize="20dp"
+            android:textColor="@color/red"
+            android:background="@android:color/transparent"/>
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Comments (3)"
+            android:id="@+id/pin_text_comment"
+            android:textSize="20dp"
+            android:textColor="@color/blue"
+            android:background="@android:color/transparent"/>
+        
+    </RelativeLayout>
+
+</LinearLayout>
