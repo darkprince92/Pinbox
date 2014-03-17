@@ -48,22 +48,25 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp" >
 
-            <!--
-                 <Button android:id="@+id/login_button_signup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign Up"
-                android:layout_weight="1" />
-            -->
-
-            <TextView
-                android:id="@+id/login_text_signup"
+            <Button
+                android:id="@+id/login_button_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingLeft="15dp"
+                android:paddingLeft="0dp"
+                android:text="Sign Up"
+                style="?android:attr/buttonBarStyle"
+                android:textColor="@color/button_blue" />
+            
+            <!-- <TextView
+                android:id="@+id/login_button_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="0dp"
                 android:text="Sign Up"
                 android:textColor="@color/button_blue" />
+             -->
 
             <Button
                 android:id="@+id/login_button_login"

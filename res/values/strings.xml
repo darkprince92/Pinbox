@@ -15,5 +15,8 @@
     <string name="comment_lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_activity_album_details">AlbumDetailsActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sing_up">SingUpActivity</string>
+    <string name="title_activity_app_pin">AppPinActivity</string>
 
 </resources>

@@ -28,6 +28,8 @@ public class LoginActivity extends Activity {
 	EditText emailText,passwordText;
 	ProgressDialog pd;
 	ArrayList<NameValuePair> dataToSend;
+	Button buttonSignUp;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +49,15 @@ public class LoginActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				checkLogin();
+			}
+		});
+		
+		buttonSignUp.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 	}
