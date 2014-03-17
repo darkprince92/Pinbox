@@ -42,11 +42,7 @@
         <activity
             android:name="com.example.pinboxproject.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name="com.example.pinboxproject.NavigationActivity"
@@ -75,6 +71,13 @@
         <activity
             android:name="com.example.pinboxproject.AlbumDetailsActivity"
             android:label="@string/title_activity_album_details" >
+        </activity>
+        <activity android:name="SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

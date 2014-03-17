@@ -3,6 +3,13 @@ package com.example.pinboxproject.entity;
 public class User {
 	int id;
 	String userName,email;
+	
+	public User(int id, String userName, String email) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.email = email;
+	}
 	/**
 	 * @return the id
 	 */ 
