@@ -11,14 +11,20 @@
         android:src="@drawable/login"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp" />
-    
-    <EditText android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/add_pin_button_add_image"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minLines="4"
-        android:layout_weight="1"
+        android:text="Camera" />
+    
+    <EditText
         android:id="@+id/add_pin_edittext_description"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginBottom="20dp"
         android:hint="Description"
-        android:layout_marginBottom="20dp" />
+        android:minLines="4" />
     
     <EditText android:layout_width="match_parent"
         android:layout_height="wrap_content"

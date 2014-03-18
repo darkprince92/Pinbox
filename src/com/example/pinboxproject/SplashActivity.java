@@ -4,15 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import com.example.pinboxproject.entity.*;
+
+import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
+import com.example.pinboxproject.entity.Settings;
 
 public class SplashActivity extends Activity {
 	private final int SPLASH_DISPLAY_LENGTH = 1000;
+	MyPrePopulatedDBHelper mdb;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash);
+		init();
 		
 		//getActionBar().hide();
 		
@@ -35,5 +39,10 @@ public class SplashActivity extends Activity {
                 
             }
         }, SPLASH_DISPLAY_LENGTH);
+	}
+	private void init()
+	{
+		mdb=new MyPrePopulatedDBHelper(this, "tik");
+		Settings.categories=mdb.getAllCats();
 	}
 }
