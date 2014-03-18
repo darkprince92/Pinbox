@@ -2,10 +2,6 @@ package com.example.pinboxproject;
 
 import com.origamilabs.library.views.StaggeredGridView;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-
 public class AlbumDetailsActivity extends NavigationActivity {
 	
 	private StaggeredAdapter adapter;
