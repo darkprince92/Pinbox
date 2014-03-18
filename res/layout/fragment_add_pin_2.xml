@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/activity_horizontal_margin" >
+    
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/login"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp" />
+    
+    <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="4"
+        android:layout_weight="1"
+        android:id="@+id/add_pin_edittext_description"
+        android:hint="Description"
+        android:layout_marginBottom="20dp" />
+    
+    <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tags"
+        android:id="@+id/add_pin_edittext_tags"
+        android:layout_marginBottom="20dp" />
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_weight="1"
+            android:id="@+id/add_pin_button_back" />
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_weight="1"
+            android:id="@+id/add_pin_button_add_2" />
+        
+    </LinearLayout>
+
+</LinearLayout>

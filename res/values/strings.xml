@@ -18,5 +18,6 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_sing_up">SingUpActivity</string>
     <string name="title_activity_app_pin">AppPinActivity</string>
+    <string name="title_activity_add_pin">AddPinActivity</string>
 
 </resources>
