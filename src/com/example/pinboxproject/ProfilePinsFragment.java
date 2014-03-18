@@ -1,5 +1,6 @@
 package com.example.pinboxproject;
 
+import com.example.pinboxproject.adapters.StaggeredAdapter;
 import com.origamilabs.library.views.StaggeredGridView;
 
 import android.app.Activity;

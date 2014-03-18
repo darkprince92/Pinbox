@@ -1,5 +1,7 @@
 package com.example.pinboxproject;
 
+import com.example.pinboxproject.adapters.GridAlbumAdapter;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -1,6 +1,11 @@
-package com.example.pinboxproject;
+package com.example.pinboxproject.adapters;
 
 import java.util.ArrayList;
+
+import com.example.pinboxproject.R;
+import com.example.pinboxproject.R.drawable;
+import com.example.pinboxproject.R.id;
+import com.example.pinboxproject.R.layout;
 import com.example.pinboxproject.apputils.*;
 import android.app.Activity;
 import android.content.Context;

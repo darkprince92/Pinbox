@@ -1,5 +1,7 @@
 package com.example.pinboxproject;
 
+
+import com.example.pinboxproject.adapters.StaggeredAdapter;
 import com.origamilabs.library.views.StaggeredGridView;
 
 public class AlbumDetailsActivity extends NavigationActivity {

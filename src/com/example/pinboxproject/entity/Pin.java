@@ -1,6 +1,6 @@
 package com.example.pinboxproject.entity;
 
-public class Location {
+public class Pin {
 	double latitude,longitude;
 	String name,address,district,thana,description;
 	String catName,username,time;
@@ -161,7 +161,7 @@ public class Location {
 	public void setDownvote(int downvote) {
 		this.downvote = downvote;
 	}
-	public Location(double latitude, double longitude, String name,
+	public Pin(double latitude, double longitude, String name,
 			String address, String district, String thana, String description,
 			String catName, String username, String time, int upvote,
 			int downvote) {
@@ -179,7 +179,7 @@ public class Location {
 		this.upvote = upvote;
 		this.downvote = downvote;
 	}
-	public Location(double latitude, double longitude, String name,
+	public Pin(double latitude, double longitude, String name,
 			String address, String district, String thana, String description,
 			String catName, String username, String time, int id, int upvote,
 			int downvote) {

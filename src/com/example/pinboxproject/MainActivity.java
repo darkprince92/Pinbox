@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pinboxproject.adapters.StaggeredAdapter;
 import com.origamilabs.library.views.StaggeredGridView;
 
 public class MainActivity extends NavigationActivity {

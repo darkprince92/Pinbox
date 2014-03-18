@@ -1,5 +1,7 @@
 package com.example.pinboxproject;
 
+import com.example.pinboxproject.adapters.SearchPagerAdapter;
+
 import android.support.v4.view.ViewPager;
 
 public class SearchActivity extends NavigationActivity {

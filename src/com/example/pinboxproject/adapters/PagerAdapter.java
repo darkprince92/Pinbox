@@ -1,4 +1,4 @@
-package com.example.pinboxproject;
+package com.example.pinboxproject.adapters;
 
 import java.util.ArrayList;
 

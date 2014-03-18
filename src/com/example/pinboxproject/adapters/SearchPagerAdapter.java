@@ -1,6 +1,11 @@
-package com.example.pinboxproject;
+package com.example.pinboxproject.adapters;
 
 import java.util.ArrayList;
+
+import com.example.pinboxproject.SearchAlbumFragment;
+import com.example.pinboxproject.SearchMapFragment;
+import com.example.pinboxproject.SearchPinListFragment;
+import com.example.pinboxproject.SearchUserFragment;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
