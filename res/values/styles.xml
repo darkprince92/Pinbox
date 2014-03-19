@@ -4,17 +4,49 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="android:Theme.Light">
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
-        -->
+        -->       
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
+        <!-- App Edit Text Style -->
+        <item name="android:editTextStyle">@style/EditTextBoxStyle</item>
+        
+        <!-- App Blue Button Style -->
+        <item name="android:buttonStyle">@style/AppBlueButtonStyle</item>
+        
+        <!-- App Action Bar Style -->
+        <item name="android:actionBarStyle">@style/AppActionBar</item>
+        
+    </style>
+    
+    <style name="EditTextBoxStyle" parent="@android:style/Widget.EditText">
+         <item name="android:textColor">@color/text_primary</item>
+         <item name="android:background">@drawable/edit_text_background</item>
+         <item name="android:padding">10dp</item>
+    </style>
+    
+    <style name="AppBlueButtonStyle" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:height">48dp</item>
+        <item name="android:textSize">20dp</item>        
+    </style>
+    
+    <style name="AppTabButtonStyle" parent="@android:style/Widget.Button">
+        
+    </style>
+    
+    <style name="AppActionBar" parent="@android:style/Widget.ActionBar">
+        <item name="android:background">@color/white</item>
     </style>
 
 </resources>

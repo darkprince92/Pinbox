@@ -224,21 +224,26 @@ containing a value of this type.
         public static final int common_signin_btn_text_pressed_dark=0x7f020019;
         public static final int common_signin_btn_text_pressed_light=0x7f02001a;
         public static final int edit_text_background=0x7f02001b;
-        public static final int ic_add=0x7f02001c;
-        public static final int ic_launcher=0x7f02001d;
-        public static final int ic_navigation_drawer=0x7f02001e;
-        public static final int login=0x7f02001f;
-        public static final int sample_0=0x7f020020;
-        public static final int sample_1=0x7f020021;
-        public static final int sample_2=0x7f020022;
-        public static final int sample_3=0x7f020023;
-        public static final int sample_4=0x7f020024;
-        public static final int sample_5=0x7f020025;
-        public static final int sample_6=0x7f020026;
-        public static final int sample_7=0x7f020027;
+        public static final int ic_action_navigation=0x7f02001c;
+        public static final int ic_action_user=0x7f02001d;
+        public static final int ic_add=0x7f02001e;
+        public static final int ic_launcher=0x7f02001f;
+        public static final int ic_navigation_drawer=0x7f020020;
+        public static final int login=0x7f020021;
+        public static final int sample_0=0x7f020022;
+        public static final int sample_1=0x7f020023;
+        public static final int sample_2=0x7f020024;
+        public static final int sample_3=0x7f020025;
+        public static final int sample_4=0x7f020026;
+        public static final int sample_5=0x7f020027;
+        public static final int sample_6=0x7f020028;
+        public static final int sample_7=0x7f020029;
     }
     public static final class id {
+        public static final int action_logout=0x7f05006e;
+        public static final int action_profile=0x7f05006d;
         public static final int action_settings=0x7f05006b;
+        public static final int action_user=0x7f05006c;
         public static final int add_pin_button_add_2=0x7f050030;
         public static final int add_pin_button_back=0x7f05002f;
         public static final int add_pin_edittext_description=0x7f05002d;
@@ -504,6 +509,7 @@ containing a value of this type.
         public static final int title_activity_user_profile=0x7f060021;
     }
     public static final class style {
+        public static final int AppActionBar=0x7f080005;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
@@ -526,10 +532,12 @@ containing a value of this type.
  API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBlueButtonStyle=0x7f080003;
+        public static final int AppTabButtonStyle=0x7f080004;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int EditTextBoxStyle=0x7f080002;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.

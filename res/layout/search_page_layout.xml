@@ -15,29 +15,25 @@
             android:layout_height="wrap_content"
             android:text="Pin"
             android:id="@+id/search_button_pins"
-            android:layout_weight="1"
-            android:background="@color/app_grey" />
+            android:layout_weight="1" />
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Albums"
             android:id="@+id/search_button_albums"
-            android:layout_weight="1"            
-            android:background="@color/app_grey" />
+            android:layout_weight="1" />
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Users"
             android:id="@+id/search_button_users"
-            android:layout_weight="1"
-            android:background="@color/app_grey" />
+            android:layout_weight="1" />
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Map"
             android:id="@+id/search_button_map"
-            android:layout_weight="1"
-            android:background="@color/app_grey" />
+            android:layout_weight="1" />
         
     </LinearLayout>
     

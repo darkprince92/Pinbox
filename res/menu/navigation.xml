@@ -5,5 +5,21 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    
+    <item android:id="@+id/action_user"
+        android:icon="@drawable/ic_action_user"
+        android:showAsAction="always" >
+        
+        <menu >
+            <item android:id="@+id/action_profile"
+                android:title="Profile"
+                android:showAsAction="always|withText" />
+            <item android:id="@+id/action_logout"
+                android:title="Logout"
+                android:showAsAction="always|withText" />
+        </menu>
+        
+    </item>
+    
 
 </menu>

@@ -63,7 +63,7 @@ public abstract class NavigationActivity extends FragmentActivity {
 		
 		mDrawerToggle = new ActionBarDrawerToggle(this, 
 				mDrawerLayout, 
-				R.drawable.ic_navigation_drawer,
+				R.drawable.ic_action_navigation,
 				R.string.drawer_open, 
 				R.string.drawer_close){
 			
