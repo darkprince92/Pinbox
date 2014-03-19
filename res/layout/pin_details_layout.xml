@@ -72,6 +72,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
+            android:id="@+id/pin_text_no_photo"
             android:text="No photos available"/>
         
     </HorizontalScrollView>
@@ -128,28 +129,35 @@
     
     <include layout="@layout/divider_line"/>
     
-    <RelativeLayout android:layout_width="match_parent"
+    <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin" >
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:layout_weight="1" >
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="Report Pin"
+            android:id="@+id/pin_button_report"
             android:textSize="20dp"
             android:textColor="@color/red"
-            android:background="@android:color/transparent"/>
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            style="?android:attr/buttonBarButtonStyle"/>
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="Comments (3)"
-            android:id="@+id/pin_text_comment"
+            android:id="@+id/pin_button_comment"
             android:textSize="20dp"
+            android:layout_weight="1"
+            android:gravity="right|center_vertical"
             android:textColor="@color/blue"
-            android:background="@android:color/transparent"/>
+            style="?android:attr/buttonBarButtonStyle"/>
         
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

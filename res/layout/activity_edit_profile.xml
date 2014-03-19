@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".EditProfileActivity"
+    android:orientation="vertical" >
+
+    <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:id="@+id/edit_profile_edittext_name"
+        android:layout_marginBottom="20dp" />
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp" >
+        
+        <ImageView android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_launcher" />
+        
+        <Button android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Profile Picture"
+            android:id="@+id/edit_profile_button_change_pic"
+            android:layout_marginLeft="10dp" />        
+        
+    </LinearLayout>
+    
+    <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:id="@+id/edit_profile_edittext_email"
+        android:layout_marginBottom="10dp" />
+
+    <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:id="@+id/edit_profile_edittext_location"
+        android:layout_marginBottom="10dp" />
+    
+    <EditText android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="About Me"
+        android:id="@+id/edit_profile_edittext_about"
+        android:lines="4"
+        android:gravity="start"
+        android:layout_marginBottom="10dp" />
+    
+    <Button android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/edit_profile_button_save" />
+    
+</LinearLayout>

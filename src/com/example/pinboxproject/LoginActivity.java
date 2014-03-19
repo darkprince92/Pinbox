@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 	Button loginButton;
@@ -40,6 +41,7 @@ public class LoginActivity extends Activity {
 	private void init()
 	{
 		loginButton=(Button)findViewById(R.id.login_button_login);
+		buttonSignUp = (Button)findViewById(R.id.login_button_signup);
 		emailText=(EditText)findViewById(R.id.login_edittext_username);
 		passwordText=(EditText)findViewById(R.id.login_edittext_password);
 		
@@ -57,7 +59,8 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);			
+				LoginActivity.this.startActivity(intent);				
 			}
 		});
 	}
@@ -78,7 +81,8 @@ public class LoginActivity extends Activity {
 		}
 		else
 		{
-			//email or password field empty	
+			//email or password field empty
+			Toast.makeText(this, "All Fields not completed", Toast.LENGTH_SHORT).show();
 		}
 	}
 	

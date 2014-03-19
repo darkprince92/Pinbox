@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import com.example.pinboxproject.adapters.NavigationListAdapter;
+
 import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;

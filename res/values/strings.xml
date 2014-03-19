@@ -19,5 +19,8 @@
     <string name="title_activity_sing_up">SingUpActivity</string>
     <string name="title_activity_app_pin">AppPinActivity</string>
     <string name="title_activity_add_pin">AddPinActivity</string>
+    <string name="title_activity_create_album">CreateAlbumActivity</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_category">CategoryActivity</string>
 
 </resources>

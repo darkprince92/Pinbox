@@ -2,6 +2,8 @@ package com.example.pinboxproject;
 
 import java.util.ArrayList;
 
+import com.example.pinboxproject.adapters.SearchAlbumAdapter;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
