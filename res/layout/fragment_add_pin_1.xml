@@ -19,12 +19,14 @@
             android:id="@+id/add_pin_spinner_category" />
         
         <TextView android:layout_width="match_parent"
+            android:id="@+id/add_pin_text_additional"
             android:layout_height="wrap_content"
             android:text="Additional Info"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:gravity="right"
-            android:textColor="@color/button_blue"/>
+            android:textColor="@color/button_blue"
+            android:clickable="true"/>
         
     </LinearLayout>
         

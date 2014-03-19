@@ -44,7 +44,7 @@ public class LoginActivity extends Activity {
 		buttonSignUp = (Button)findViewById(R.id.login_button_signup);
 		emailText=(EditText)findViewById(R.id.login_edittext_username);
 		passwordText=(EditText)findViewById(R.id.login_edittext_password);
-		
+		buttonSignUp=(Button)findViewById(R.id.login_button_signup);
 		loginButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

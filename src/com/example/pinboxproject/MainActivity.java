@@ -2,6 +2,7 @@ package com.example.pinboxproject;
 
 import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.pinboxproject.adapters.StaggeredAdapter;
@@ -12,6 +13,7 @@ public class MainActivity extends NavigationActivity {
 	private StaggeredAdapter adapter;
 	private static int screenWidth;
 	private static int columnNumber = 2;
+	private Button buttonAddPin,buttonMap,buttonSearch;
 
 	@Override
 	protected void createView() {
@@ -28,7 +30,7 @@ public class MainActivity extends NavigationActivity {
 		adapter = new StaggeredAdapter(this, screenWidth - 40, staggeredGrid.getColumnCount());
 		staggeredGrid.setAdapter(adapter);
 		
-		Button buttonSearch = (Button)findViewById(R.id.home_button_search);
+		buttonSearch = (Button)findViewById(R.id.home_button_search);
 		buttonSearch.setOnClickListener(new Button.OnClickListener() {
 			
 			@Override
@@ -42,7 +44,7 @@ public class MainActivity extends NavigationActivity {
 		});
 	
 		
-		Button buttonMap = (Button)findViewById(R.id.home_button_map);
+		buttonMap = (Button)findViewById(R.id.home_button_map);
 		buttonMap.setOnClickListener(new Button.OnClickListener() {
 			
 			@Override
@@ -50,6 +52,17 @@ public class MainActivity extends NavigationActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MainActivity.this, MapActivity.class);
 				MainActivity.this.startActivity(intent);
+			}
+		});
+		buttonAddPin=(Button)findViewById(R.id.home_button_add_pin);
+		buttonAddPin.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(MainActivity.this,AddPinActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+				startActivity(intent);
 			}
 		});
 		

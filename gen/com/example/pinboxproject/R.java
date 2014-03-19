@@ -240,6 +240,7 @@ containing a value of this type.
         public static final int sample_7=0x7f020029;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int action_logout=0x7f05006e;
         public static final int action_profile=0x7f05006d;
         public static final int action_settings=0x7f05006b;
@@ -257,6 +258,23 @@ containing a value of this type.
         public static final int album_text_description=0x7f05001e;
         public static final int app_pin_button_add=0x7f05002c;
         public static final int button_add_comment=0x7f050022;
+=======
+        public static final int action_settings=0x7f050059;
+        public static final int add_pin_button_add_2=0x7f050020;
+        public static final int add_pin_button_add_image=0x7f05001c;
+        public static final int add_pin_button_back=0x7f05001f;
+        public static final int add_pin_edittext_description=0x7f05001d;
+        public static final int add_pin_edittext_tags=0x7f05001e;
+        public static final int add_pin_edittext_title=0x7f050017;
+        public static final int add_pin_map_fragment=0x7f05001a;
+        public static final int add_pin_pager=0x7f050005;
+        public static final int add_pin_spinner_category=0x7f050018;
+        public static final int add_pin_text_additional=0x7f050019;
+        public static final int album_grid_image=0x7f05002f;
+        public static final int album_staggeredGridView=0x7f050014;
+        public static final int album_text_description=0x7f050013;
+        public static final int app_pin_button_add=0x7f05001b;
+>>>>>>> f601fb73b8d104130880b1da2346fc080fa2a401
         public static final int content_frame=0x7f050007;
         public static final int create_album_button_app_pins=0x7f05000b;
         public static final int create_album_button_save=0x7f05000d;
@@ -264,6 +282,7 @@ containing a value of this type.
         public static final int create_album_edittext_title=0x7f050009;
         public static final int create_album_grid_pins=0x7f05000c;
         public static final int drawer_layout=0x7f050006;
+<<<<<<< HEAD
         public static final int editText_comment=0x7f050021;
         public static final int edit_profile_button_change_pic=0x7f05000f;
         public static final int edit_profile_button_save=0x7f050013;
@@ -351,6 +370,81 @@ containing a value of this type.
         public static final int text_nav_title=0x7f050028;
         public static final int text_sort_by=0x7f050033;
         public static final int text_view_comment_comment=0x7f050026;
+=======
+        public static final int home_button_add_pin=0x7f050031;
+        public static final int home_button_map=0x7f050032;
+        public static final int home_button_search=0x7f050030;
+        public static final int horizontal_list=0x7f05003a;
+        public static final int hybrid=0x7f050004;
+        public static final int imageView1=0x7f050012;
+        public static final int image_item=0x7f050050;
+        public static final int image_nav_icon=0x7f050015;
+        public static final int left_drawer=0x7f050008;
+        public static final int login_button_login=0x7f05000c;
+        public static final int login_button_signup=0x7f05000b;
+        public static final int login_edittext_password=0x7f05000a;
+        public static final int login_edittext_username=0x7f050009;
+        public static final int map_activity_fragment=0x7f050034;
+        public static final int none=0x7f050000;
+        public static final int normal=0x7f050001;
+        public static final int pin_button_add_tag=0x7f05003b;
+        public static final int pin_details_map_fragment=0x7f050035;
+        public static final int pin_text_category=0x7f050038;
+        public static final int pin_text_comment=0x7f05003c;
+        public static final int pin_text_title=0x7f050036;
+        public static final int pin_text_user=0x7f050039;
+        public static final int pin_text_vote=0x7f050037;
+        public static final int profile_button_album=0x7f050057;
+        public static final int profile_button_pin=0x7f050056;
+        public static final int profile_grid_album=0x7f050021;
+        public static final int profile_image=0x7f050053;
+        public static final int profile_pager=0x7f050058;
+        public static final int profile_staggeredGridView=0x7f050022;
+        public static final int profile_text_email=0x7f050055;
+        public static final int profile_text_username=0x7f050054;
+        public static final int satellite=0x7f050002;
+        public static final int search_album_image=0x7f05003d;
+        public static final int search_album_list=0x7f050025;
+        public static final int search_album_spinner_sort=0x7f050024;
+        public static final int search_album_text_address=0x7f05003f;
+        public static final int search_album_text_comment=0x7f050040;
+        public static final int search_album_text_rating=0x7f050041;
+        public static final int search_album_text_title=0x7f05003e;
+        public static final int search_button_albums=0x7f050043;
+        public static final int search_button_map=0x7f050045;
+        public static final int search_button_pins=0x7f050042;
+        public static final int search_button_users=0x7f050044;
+        public static final int search_map_fragment=0x7f050028;
+        public static final int search_map_spinner_category=0x7f050027;
+        public static final int search_map_spinner_location=0x7f050026;
+        public static final int search_pager=0x7f050046;
+        public static final int search_pin_image=0x7f050047;
+        public static final int search_pin_list=0x7f05002c;
+        public static final int search_pin_spinner_category=0x7f05002b;
+        public static final int search_pin_spinner_sort=0x7f050029;
+        public static final int search_pin_text_address=0x7f050049;
+        public static final int search_pin_text_category=0x7f05004c;
+        public static final int search_pin_text_comment=0x7f05004a;
+        public static final int search_pin_text_rating=0x7f05004b;
+        public static final int search_pin_text_title=0x7f050048;
+        public static final int search_user_image=0x7f05004d;
+        public static final int search_user_list=0x7f05002e;
+        public static final int search_user_spinner_location=0x7f05002d;
+        public static final int search_user_text_email=0x7f05004f;
+        public static final int search_user_text_name=0x7f05004e;
+        public static final int signup_button_signup=0x7f050011;
+        public static final int signup_edittext_confrm_password=0x7f050010;
+        public static final int signup_edittext_email=0x7f05000e;
+        public static final int signup_edittext_password=0x7f05000f;
+        public static final int signup_edittext_username=0x7f05000d;
+        public static final int staggeredGridView1=0x7f050033;
+        public static final int terrain=0x7f050003;
+        public static final int text_category_select=0x7f05002a;
+        public static final int text_item_category=0x7f050052;
+        public static final int text_item_title=0x7f050051;
+        public static final int text_nav_title=0x7f050016;
+        public static final int text_sort_by=0x7f050023;
+>>>>>>> f601fb73b8d104130880b1da2346fc080fa2a401
     }
     public static final class layout {
         public static final int activity_add_pin=0x7f030000;
@@ -410,29 +504,15 @@ containing a value of this type.
     public static final class string {
         public static final int action_settings=0x7f060016;
         public static final int app_name=0x7f060015;
-        /**   Title for notification shown when GooglePlayServices needs to be
-        enabled for a application to work. [CHAR LIMIT=70] 
+        /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_enabling_title=0x7f060010;
-        /**   Title for notification shown when GooglePlayServices needs to be
-        installed for a application to work. [CHAR LIMIT=70] 
-         */
-        public static final int auth_client_needs_installation_title=0x7f060011;
-        /**   Title for notification shown when GooglePlayServices needs to be
-        udpated for a application to work. [CHAR LIMIT=70] 
-         */
-        public static final int auth_client_needs_update_title=0x7f060012;
+        public static final int auth_client_availability_notification_title=0x7f06000f;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int auth_client_play_services_err_notification_msg=0x7f060013;
+        public static final int auth_client_play_services_err_notification_msg=0x7f060010;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int auth_client_requested_by_msg=0x7f060014;
-        /**   Title for notification shown when a bad version of GooglePlayServices
-        has been installed and needs correction for an application to work.
-        [CHAR LIMIT=70] 
-         */
-        public static final int auth_client_using_bad_version_title=0x7f06000f;
+        public static final int auth_client_requested_by_msg=0x7f060011;
         public static final int comment_lorem=0x7f060020;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
@@ -492,6 +572,17 @@ containing a value of this type.
         public static final int drawer_close=0x7f06001a;
         public static final int drawer_open=0x7f060019;
         public static final int hello_world=0x7f060017;
+        /**  Location client code resources (prefix with location_client) 
+
+        Begin strings for location.reporting
+    
+
+        Some InactiveReason names.  See more in OneUp/package/location/res/values/strings.xml
+    
+         */
+        public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
+        public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
+        public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
         public static final int lorem_ipsum=0x7f06001f;
         public static final int title_activity_add_pin=0x7f060026;
         public static final int title_activity_album_details=0x7f060022;

@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import com.example.pinboxproject.entity.Category;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -98,6 +100,32 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	{
 	    		database.close();
 	    	}
+	    }
+	    public ArrayList<Category> getAllCats()
+	    {
+	    	ArrayList<Category> cats=new ArrayList<Category>();
+	    	SQLiteDatabase db=this.database;
+	    	String col[]={"CATEGORY_ID","CATEGORY_NAME"};
+	    	Cursor c=db.query("pin_category", col, null, null, null, null,null);
+	    	if(c!=null && c.getCount()>0)
+			{
+	    		c.moveToFirst();
+	    		for(int i=0;i<c.getCount();i++)
+				{
+	    			String name=c.getString(c.getColumnIndex("CATEGORY_NAME"));
+	    			int id=c.getInt(c.getColumnIndex("CATEGORY_ID"));
+	    			Category cat=new Category(id, name);
+	    			cats.add(cat);
+	    			c.moveToNext();
+	    			
+				}
+	    		
+			
+			}
+	    	c.close();
+	    	this.database.close();
+	    	return cats;
+	    			
 	    }
 	    public ArrayList<String> getAllLocations()
 	    {

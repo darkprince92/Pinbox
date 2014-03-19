@@ -87,6 +87,15 @@ public class MapSetup {
 		});*/
 	}
 	
+	/**
+	 * @return the myLocation
+	 */
+	public LatLng getMyLocation() {
+		return myLocation;
+	}
+
+
+
 	public GoogleMap getMap(){
 		return map;
 	}
