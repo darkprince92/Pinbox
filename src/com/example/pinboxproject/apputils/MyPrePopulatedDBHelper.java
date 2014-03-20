@@ -194,7 +194,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	}
 	    	SQLiteDatabase db=this.database;
 	    	String col[]={"CATEGORY_ID","LOCATION_NAME","LOCATION_ID","DESCRIPTION","up_vote","down_vote","PINNING_TIME","USER_ID"};
-	    	Cursor c=db.query("pin_location", col, null, null, null, null,"PINNING_TIME","0,100");
+	    	Cursor c=db.query("pin_location", col, null, null, null, null,"PINNING_TIME DESC","0,100");
 	    	
 	    	
 	    	if(c!=null && c.getCount()>0)

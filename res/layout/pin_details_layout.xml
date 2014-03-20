@@ -78,13 +78,21 @@
         android:layout_height="80dp"
         android:background="@color/app_grey"
         android:id="@+id/horizontal_list">
-        
-        <TextView android:layout_width="match_parent"
+        <LinearLayout 
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/pin_ll_image_holder">
+        	<TextView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            
             android:layout_gravity="center"
             android:gravity="center"
             android:id="@+id/pin_text_no_photo"
             android:text="No photos available"/>
+        	    
+        </LinearLayout>
+        
         
     </HorizontalScrollView>
     

@@ -9,18 +9,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pinboxproject.CommentDialogFragment.CommentHandler;
+import com.example.pinboxproject.apputils.ImageLoader;
 import com.example.pinboxproject.apputils.MapSetup;
 import com.example.pinboxproject.apputils.MyThread;
 import com.example.pinboxproject.entity.Comment;
+import com.example.pinboxproject.entity.Image;
 import com.example.pinboxproject.entity.Pin;
 import com.example.pinboxproject.entity.Settings;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -42,6 +49,8 @@ public class PinDetailsActivity extends NavigationActivity implements CommentHan
 	Pin pin;
 	private ProgressDialog pd;
 	private ArrayList<NameValuePair> dataToSend;
+	private ArrayList<Image> images;
+	private HorizontalScrollView scrollImageList;
 	
 
 	/*@Override
@@ -61,12 +70,20 @@ public class PinDetailsActivity extends NavigationActivity implements CommentHan
 	protected void createView() {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_pin_details);
-		
+		if(Settings.loggedUser==null)
+		{
+			Intent intent=new Intent(PinDetailsActivity.this,LoginActivity.class);
+			startActivity(intent);
+			
+		}
 		Bundle b = this.getIntent().getExtras();
 		pin=this.getIntent().getParcelableExtra("pin_data");
 
 		System.out.println("Pin Test"+pin);
+		getImagesFromDB();
 		init();
+		
+		
 		
 	}
 
@@ -89,6 +106,10 @@ public class PinDetailsActivity extends NavigationActivity implements CommentHan
 		textUser = (TextView)findViewById(R.id.pin_text_user);
 		textNoPhoto = (TextView)findViewById(R.id.pin_text_no_photo);
 		textDesc=(TextView)findViewById(R.id.pin_text_description);
+		scrollImageList=(HorizontalScrollView)findViewById(R.id.horizontal_list);
+		
+		
+		
 		buttonUpVote.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -151,6 +172,43 @@ public class PinDetailsActivity extends NavigationActivity implements CommentHan
 		
 		
 	}
+	private void getImagesFromDB()
+	{
+		pd=ProgressDialog.show(PinDetailsActivity.this,"","Fetching Images...",true,false);
+		dataToSend=new ArrayList<NameValuePair>();
+//		dataToSend.add(new BasicNameValuePair("location_id", pin.getId()+""));
+		MyThread mt=new MyThread(handle, dataToSend, Settings.BASE_URL+"LocationImage/"+pin.getId());
+		mt.start();
+	}
+	private void loadImage()
+	{
+		ImageLoader imgLoader=new ImageLoader(getApplicationContext());
+		int loader=R.drawable.ic_launcher;
+		
+//		System.out.println(images.size());
+		if(images!=null)
+		{
+			if(images.size()>0)
+			{
+				textNoPhoto.setVisibility(View.GONE);
+				LinearLayout ll=(LinearLayout)findViewById(R.id.pin_ll_image_holder);
+				
+				for(int i=0;i<images.size();i++)
+				{
+					ImageView iv=new ImageView(this);
+					imgLoader.DisplayImage(Settings.ROOT_URL+images.get(i).getThumb_path(), loader, iv);
+					iv.setClickable(true);
+					
+					ll.addView(iv);
+				}
+//				scrollImageList.addView(ll);
+				
+			}
+		}
+//		int loader=R.drawable.no_photos;
+		
+//		imgLoader.DisplayImage(Settings.BASE_IMAGE_URL+imagePath, loader, iv);
+	}
 	Handler handle=new Handler()
 	{
 		public void handleMessage(android.os.Message msg)
@@ -199,6 +257,24 @@ public class PinDetailsActivity extends NavigationActivity implements CommentHan
 				else if(responseObj.getString("response_type").equals("error"))
 				{
 					Toast.makeText(getApplicationContext(), responseObj.getString("response"), Toast.LENGTH_LONG).show();
+				}
+				else if(responseObj.getString("response_type").equals("success_in_getting_image"))
+				{
+					images=new ArrayList<Image>();
+					JSONArray imageJsonArray=responseObj.getJSONArray("response");
+					for(int i=0;i<imageJsonArray.length();i++)
+					{
+						String path=imageJsonArray.getJSONObject(i).getString("PATH");
+						String thumbPath=imageJsonArray.getJSONObject(i).getString("THUMB_PATH");
+						Image im=new Image(path, thumbPath);
+						images.add(im);
+					}
+					loadImage();
+					Toast.makeText(getApplicationContext(), "Has some Images", Toast.LENGTH_LONG).show();
+				}
+				else if(responseObj.getString("response_type").equals("error_in_getting_image"))
+				{
+					Toast.makeText(getApplicationContext(), "No Images", Toast.LENGTH_LONG).show();
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
