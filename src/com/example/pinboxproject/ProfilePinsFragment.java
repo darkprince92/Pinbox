@@ -36,7 +36,7 @@ public class ProfilePinsFragment extends Fragment{
 		else columnNumber = 3;
 		
 		StaggeredGridView staggeredGrid = (StaggeredGridView)view.findViewById(R.id.profile_staggeredGridView);
-		adapter = new StaggeredAdapter(activity, screenWidth - 40, staggeredGrid.getColumnCount());
+		adapter = new StaggeredAdapter(activity, screenWidth - 40, staggeredGrid.getColumnCount(),null);
 		staggeredGrid.setAdapter(adapter);
 		
 		return view;

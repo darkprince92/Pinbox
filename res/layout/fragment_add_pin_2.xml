@@ -24,12 +24,12 @@
         android:layout_height="78dp"
         android:layout_marginBottom="20dp"
         android:hint="Description"
-<<<<<<< HEAD
-        android:layout_marginBottom="20dp"
-        android:gravity="start" />
-=======
+
+        
+        android:gravity="start"
+
         android:minLines="4" />
->>>>>>> f601fb73b8d104130880b1da2346fc080fa2a401
+
     
     <EditText android:layout_width="match_parent"
         android:layout_height="wrap_content"

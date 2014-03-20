@@ -1,6 +1,9 @@
 package com.example.pinboxproject.entity;
 
-public class Location {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Location implements Parcelable{
 	double latitude,longitude;
 	String district,thana,address;
 	public Location(double latitude, double longitude, String district,
@@ -83,5 +86,46 @@ public class Location {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public Location(Parcel in)
+	{
+		readFromParcel(in);
+	}
+	
+	private void readFromParcel(Parcel in)
+	{
+		latitude=in.readDouble();
+		longitude=in.readDouble();
+		district=in.readString();
+		thana=in.readString();
+		address=in.readString();
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeDouble(latitude);
+		dest.writeDouble(longitude);
+		dest.writeString(district);
+		dest.writeString(thana);
+		dest.writeString(address);
+	}
+	public static final Parcelable.Creator<Location> CREATOR=new Parcelable.Creator<Location>() {
+
+		@Override
+		public Location createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Location(source);
+		}
+		@Override
+		public Location[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Location[size];
+		}
+	};
 	
 }	

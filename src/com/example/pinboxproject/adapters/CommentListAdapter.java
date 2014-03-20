@@ -2,10 +2,6 @@ package com.example.pinboxproject.adapters;
 
 import java.util.ArrayList;
 
-import com.example.pinboxproject.R;
-import com.example.pinboxproject.R.id;
-import com.example.pinboxproject.R.layout;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,23 +10,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.pinboxproject.R;
+import com.example.pinboxproject.entity.Comment;
+
 
 public class CommentListAdapter extends BaseAdapter{
 	
 	private ArrayList<CommentData> commentData;
-	//ArrayList<IncidentComment> comments;
+	ArrayList<Comment> comments;
 	private Activity activity;
 	
-	public CommentListAdapter(Activity activity){
-		//this.comments=comments;
+	public CommentListAdapter(Activity activity,ArrayList<Comment> comments){
+		this.comments=comments;
 		this.activity = activity;
+		
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		//return comments.size();
-		return 5;
+		return comments.size();
 	}
 
 	@Override
@@ -57,8 +57,8 @@ public class CommentListAdapter extends BaseAdapter{
 		commentUserName=(TextView)convertView.findViewById(R.id.text_comment_name);
 		commentDesc=(TextView)convertView.findViewById(R.id.text_view_comment_comment);
 		
-		//commentUserName.setText(comments.get(position).getAuthor());
-		//commentDesc.setText(comments.get(position).getDescription());
+		commentUserName.setText(comments.get(position).getAuthor());
+		commentDesc.setText(comments.get(position).getDescription());
 		return convertView;
 	}
 	

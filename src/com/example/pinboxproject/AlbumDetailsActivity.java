@@ -22,7 +22,7 @@ public class AlbumDetailsActivity extends NavigationActivity {
 		else columnNumber = 3;
 		
 		StaggeredGridView staggeredGrid = (StaggeredGridView)findViewById(R.id.staggeredGridView1);
-		adapter = new StaggeredAdapter(this, screenWidth - 40, staggeredGrid.getColumnCount());
+		adapter = new StaggeredAdapter(this, screenWidth - 40, staggeredGrid.getColumnCount(),null);
 		staggeredGrid.setAdapter(adapter);
 		
 	}

@@ -2,11 +2,6 @@ package com.example.pinboxproject.adapters;
 
 import java.util.ArrayList;
 
-import com.example.pinboxproject.R;
-import com.example.pinboxproject.R.drawable;
-import com.example.pinboxproject.R.id;
-import com.example.pinboxproject.R.layout;
-import com.example.pinboxproject.apputils.*;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,6 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.pinboxproject.R;
+import com.example.pinboxproject.apputils.ThumbnailConverter;
+import com.example.pinboxproject.entity.Pin;
+
 public class StaggeredAdapter extends BaseAdapter{
 	
 	private Activity activity;
@@ -26,24 +25,30 @@ public class StaggeredAdapter extends BaseAdapter{
 	
 	private ImageView imageView;
 	private ArrayList<Bitmap> imageThumbList;
+	private ArrayList<Pin> pins;
 	
-	public StaggeredAdapter(Activity activity, int screenWidth, int colNum){
+	
+	public StaggeredAdapter(Activity activity, int screenWidth, int colNum,ArrayList<Pin> pins){
 		this.activity = activity;
 		this.screenWidth = screenWidth;
 		this.columnNum = colNum;
+		this.pins=pins;
+		
 		
 		int i;
 		imageThumbList = new ArrayList<Bitmap>();
-		for(i=0;i<mThumbIds.length;i++){
-			Bitmap image = BitmapFactory.decodeResource(activity.getResources(), mThumbIds[i]);
-			imageThumbList.add(ThumbnailConverter.CreateThumbnail(image, screenWidth/columnNum)) ;
-		}
+		
+		Bitmap image = BitmapFactory.decodeResource(activity.getResources(), mThumbIds[0]);
+		imageThumbList.add(ThumbnailConverter.CreateThumbnail(image, screenWidth/columnNum)) ;
+		image = BitmapFactory.decodeResource(activity.getResources(), mThumbIds[3]);
+		imageThumbList.add(ThumbnailConverter.CreateThumbnail(image, screenWidth/columnNum)) ;
+		
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return mThumbIds.length;
+		return pins.size();
 	}
 
 	@Override
@@ -80,10 +85,11 @@ public class StaggeredAdapter extends BaseAdapter{
 			viewHolder = (ViewHolder)convertView.getTag();
 		}
 		
-		Bitmap imageThumb = imageThumbList.get(position);
+		Bitmap imageThumb = imageThumbList.get(position%2);
 		viewHolder.imageView.setImageBitmap(imageThumb);
 		String size = imageThumb.getHeight() + " " + imageThumb.getWidth();
-		viewHolder.textCategory.setText("thumb: " + size);	
+		viewHolder.textCategory.setText(pins.get(position).getCat().getCatName());	
+		viewHolder.textTitle.setText(pins.get(position).getName());
 		
 		return convertView;		
     }
