@@ -39,10 +39,14 @@
     <Button android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Pin"
+        android:paddingLeft="110dp"
+        android:drawablePadding="-110dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:id="@+id/app_pin_button_add" />
+        android:id="@+id/app_pin_button_add"
+        android:drawableLeft="@drawable/ic_add_pin"
+        android:layout_gravity="center" />
     
 </LinearLayout>

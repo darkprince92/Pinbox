@@ -14,9 +14,10 @@
 
     <Button
         android:id="@+id/add_pin_button_add_image"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Camera" />
+        android:text="Camera"
+        android:layout_marginBottom="10dp" />
     
     <EditText
         android:id="@+id/add_pin_edittext_description"
@@ -24,12 +25,10 @@
         android:layout_height="78dp"
         android:layout_marginBottom="20dp"
         android:hint="Description"
-<<<<<<< HEAD
-        android:layout_marginBottom="20dp"
-        android:gravity="start" />
-=======
-        android:minLines="4" />
->>>>>>> f601fb73b8d104130880b1da2346fc080fa2a401
+        android:gravity="start" 
+        android:minLines="4"
+        android:layout_weight="1" />
+
     
     <EditText android:layout_width="match_parent"
         android:layout_height="wrap_content"
