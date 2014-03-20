@@ -2,9 +2,6 @@ package com.example.pinboxproject;
 
 import java.util.ArrayList;
 
-import com.example.pinboxproject.adapters.CommentListAdapter;
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,6 +14,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.example.pinboxproject.adapters.CommentListAdapter;
+import com.example.pinboxproject.entity.*;
+
+
 public class CommentDialogFragment extends DialogFragment{
 	
 	ListView commentListView;
@@ -24,12 +25,13 @@ public class CommentDialogFragment extends DialogFragment{
 	EditText textDescription;
 	Activity activity;
 	CommentListAdapter commentAdapter;
-	//ArrayList<IncidentComment> comments;
-	//CommentHandler commentHandler;
+	ArrayList<Comment> coms;
+	LinearLayout noCommentsLayout;
+	CommentHandler commentHandler;
 	
-	public CommentDialogFragment(Activity activity){
+	public CommentDialogFragment(Activity activity,ArrayList<Comment> comments){
 		this.activity = activity;
-		//this.comments=c;
+		this.coms=comments;
 	}
 	
 	
@@ -52,14 +54,24 @@ public class CommentDialogFragment extends DialogFragment{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//addComment();
+				addComment();
 			}
 		});
 	    
 	    commentListView = (ListView)view.findViewById(R.id.listView_comments);
-	    commentAdapter = new CommentListAdapter(activity);
-	    commentListView.setAdapter(commentAdapter);
-	    commentListView.setClickable(false);
+	    if(coms!=null)
+	    {
+	    	commentAdapter = new CommentListAdapter(activity,coms);
+		    commentListView.setAdapter(commentAdapter);
+		    commentListView.setClickable(false);
+	    }
+	    else
+	    {
+	    	noCommentsLayout=(LinearLayout)view.findViewById(R.id.no_comment_layout);
+	    	noCommentsLayout.setVisibility(View.VISIBLE);
+	    	commentListView.setVisibility(View.GONE);
+	    }
+	    
 	    
 	    // Add action buttons    
 	    return builder.create();
@@ -70,20 +82,20 @@ public class CommentDialogFragment extends DialogFragment{
 		// TODO Auto-generated method stub
 		super.onAttach(activity);
 		
-		/*if(activity instanceof CommentHandler){
+		if(activity instanceof CommentHandler){
 			commentHandler = (CommentHandler)activity;
-		}*/
+		}
 	}
 	
 	@Override
 	public void onDetach() {
 		// TODO Auto-generated method stub
 		super.onDetach();
-		//commentHandler = null;
+		commentHandler = null;
 		
 	}
 	
-	/*public static interface CommentHandler{
+	public static interface CommentHandler{
 		
 		public void getAddedComment(Comment comment);
 	}
@@ -91,16 +103,12 @@ public class CommentDialogFragment extends DialogFragment{
 	private void addComment(){
 		String comment = textDescription.getText().toString();
 		//System.out.println("Comment in fragment: " + comment);
-		Comment commentObj = new Comment();
-		commentObj.id = SessionInfo.userID;
-		commentObj.comment = comment;
+		Comment commentObj = new Comment(Settings.loggedUser+"","",comment);
+		
 		commentHandler.getAddedComment(commentObj);
 		this.dismiss();
 	}
 	
-	public static class Comment{
-		String id;
-		String comment;
-	}
-*/		
+	
+		
 }

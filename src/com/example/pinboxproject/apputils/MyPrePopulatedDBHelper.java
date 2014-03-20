@@ -8,6 +8,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 import com.example.pinboxproject.entity.Category;
+import com.example.pinboxproject.entity.Location;
+import com.example.pinboxproject.entity.Pin;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -104,6 +106,10 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    public ArrayList<Category> getAllCats()
 	    {
 	    	ArrayList<Category> cats=new ArrayList<Category>();
+	    	if(this.database==null)
+	    	{
+	    		openDataBase();
+	    	}
 	    	SQLiteDatabase db=this.database;
 	    	String col[]={"CATEGORY_ID","CATEGORY_NAME"};
 	    	Cursor c=db.query("pin_category", col, null, null, null, null,null);
@@ -127,20 +133,93 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	return cats;
 	    			
 	    }
-	    public ArrayList<String> getAllLocations()
+	    private Category getCat(int id)
 	    {
-	    	ArrayList<String> locs=new ArrayList<String>();
+	    	Category cat=null;
+	    	if(this.database==null)
+	    	{
+	    		openDataBase();
+	    	}
 	    	SQLiteDatabase db=this.database;
-	    	String col[]={"LOCATION_NAME"};
-	    	Cursor c=db.query("pin_location", col, "LOCATION_ID > 1 AND LOCATION_ID<100", null, null, null,null);
+	    	String col[]={"CATEGORY_ID","CATEGORY_NAME"};
+	    	String whereArgs[]={id+""};
+	    	Cursor c=db.query("pin_category", col, "CATEGORY_ID=?", whereArgs, null, null,null);
+	    	if(c!=null && c.getCount()>0)
+			{
+	    		c.moveToFirst();
+	    		int catId=id;
+	    		String catName=c.getString(c.getColumnIndex("CATEGORY_NAME"));
+	    		cat=new Category(catId, catName);
+			}
+	    	c.close();
+//	    	this.database.close();
+	    	return cat;
+	    }
+	    private Location getLocation(int id)
+	    {
+	    	Location loc=null;
+	    	
+	    	if(this.database==null)
+	    	{
+	    		openDataBase();
+	    	}
+	    	SQLiteDatabase db=this.database;
+	    	String col[]={"LATITUDE","LONGITUDE","district","thana","location_address"};
+	    	Cursor c=db.query("pin_location", col, "LOCATION_ID="+id, null, null, null,null);
+	    	if(c!=null && c.getCount()>0)
+			{
+	    		c.moveToFirst();
+	    		double lat,lng;
+	    		String district, thana, address;
+	    		lat=c.getDouble(c.getColumnIndex("LATITUDE"));
+	    		lng=c.getDouble(c.getColumnIndex("LONGITUDE"));
+	    		district=c.getString(c.getColumnIndex("district"));
+	    		thana=c.getString(c.getColumnIndex("thana"));
+	    		address=c.getString(c.getColumnIndex("location_address"));
+	    		loc=new Location(lat, lng, district, thana, address);
+			
+			}
+	    	c.close();
+//	    	this.database.close();
+	    	return loc;
+	    	
+	    }
+	    public ArrayList<Pin> getAllLocations()
+	    {
+	    	ArrayList<Pin> pins=new ArrayList<Pin>();
+	    	ArrayList<Integer> catIds=new ArrayList<Integer>();
+	    	if(this.database==null)
+	    	{
+	    		openDataBase();
+	    	}
+	    	SQLiteDatabase db=this.database;
+	    	String col[]={"CATEGORY_ID","LOCATION_NAME","LOCATION_ID","DESCRIPTION","up_vote","down_vote","PINNING_TIME","USER_ID"};
+	    	Cursor c=db.query("pin_location", col, null, null, null, null,"PINNING_TIME DESC","0,100");
+	    	
 	    	
 	    	if(c!=null && c.getCount()>0)
 			{
 	    		c.moveToFirst();
 	    		for(int i=0;i<c.getCount();i++)
 				{
+//	    			Location loc;
+//	    			Category cat;
+	    			Pin pin; 
+	    			int catId=c.getInt(c.getColumnIndex("CATEGORY_ID"));
+	    			int id=c.getInt(c.getColumnIndex("LOCATION_ID"));
+	    			catIds.add(catId);
+//	    			cat=getCat(catId);
+//	    			loc=getLocation(id);
+	    			
 	    			String name=c.getString(c.getColumnIndex("LOCATION_NAME"));
-	    			locs.add(name);
+	    			
+	    			String desc=c.getString(c.getColumnIndex("DESCRIPTION"));
+	    			String pin_time=c.getString(c.getColumnIndex("PINNING_TIME"));
+	    			int upVote=c.getInt(c.getColumnIndex("up_vote"));
+	    			int downVote=c.getInt(c.getColumnIndex("down_vote"));
+	    			
+	    			pin=new Pin(null, name, desc, "admin", pin_time, null, id, upVote, downVote);
+	    			pins.add(pin);
 	    			c.moveToNext();
 	    			
 				}
@@ -148,9 +227,18 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 			
 			}
 	    	c.close();
+	    	
+	    	for(int i=0;i<pins.size();i++)
+	    	{
+	    		Pin p=pins.get(i);
+	    		Location loc=getLocation(p.getId());
+	    		Category cat=getCat(catIds.get(i));
+	    		pins.get(i).setLoc(loc);
+	    		pins.get(i).setCat(cat);
+	    	}
 	    	this.database.close();
 			
-	    	return locs;
+	    	return pins;
 	    }
 
 	@Override

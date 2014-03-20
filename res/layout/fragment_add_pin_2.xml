@@ -25,9 +25,17 @@
         android:layout_height="78dp"
         android:layout_marginBottom="20dp"
         android:hint="Description"
+<<<<<<< HEAD
         android:gravity="start" 
         android:minLines="4"
         android:layout_weight="1" />
+=======
+
+        
+        android:gravity="start"
+
+        android:minLines="4" />
+>>>>>>> 747afffdefd158ae3a5f43901656a5026e337933
 
     
     <EditText android:layout_width="match_parent"

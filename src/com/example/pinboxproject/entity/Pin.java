@@ -1,33 +1,32 @@
 package com.example.pinboxproject.entity;
 
-public class Pin {
-	double latitude,longitude;
-	String name,address,district,thana,description;
-	String catName,username,time;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.Date;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class Pin implements Parcelable{
+	Location loc;
+	String name,description;
+	String username,time;
+	Category cat;
 	int id,upvote,downvote;
+	
 	/**
-	 * @return the latitude
+	 * @return the loc
 	 */
-	public double getLatitude() {
-		return latitude;
+	public Location getLoc() {
+		return loc;
 	}
 	/**
-	 * @param latitude the latitude to set
+	 * @param loc the loc to set
 	 */
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-	/**
-	 * @return the longitude
-	 */
-	public double getLongitude() {
-		return longitude;
-	}
-	/**
-	 * @param longitude the longitude to set
-	 */
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+	public void setLoc(Location loc) {
+		this.loc = loc;
 	}
 	/**
 	 * @return the name
@@ -41,42 +40,8 @@ public class Pin {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	/**
-	 * @return the district
-	 */
-	public String getDistrict() {
-		return district;
-	}
-	/**
-	 * @param district the district to set
-	 */
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-	/**
-	 * @return the thana
-	 */
-	public String getThana() {
-		return thana;
-	}
-	/**
-	 * @param thana the thana to set
-	 */
-	public void setThana(String thana) {
-		this.thana = thana;
-	}
+	
+	
 	/**
 	 * @return the description
 	 */
@@ -89,17 +54,19 @@ public class Pin {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	
 	/**
-	 * @return the catName
+	 * @return the cat
 	 */
-	public String getCatName() {
-		return catName;
+	public Category getCat() {
+		return cat;
 	}
 	/**
-	 * @param catName the catName to set
+	 * @param cat the cat to set
 	 */
-	public void setCatName(String catName) {
-		this.catName = catName;
+	public void setCat(Category cat) {
+		this.cat = cat;
 	}
 	/**
 	 * @return the username
@@ -161,42 +128,93 @@ public class Pin {
 	public void setDownvote(int downvote) {
 		this.downvote = downvote;
 	}
-	public Pin(double latitude, double longitude, String name,
-			String address, String district, String thana, String description,
-			String catName, String username, String time, int upvote,
-			int downvote) {
+	public Pin(Location loc, String name, String description, String username,
+			String time, Category cat, int upvote, int downvote) {
 		super();
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.loc = loc;
 		this.name = name;
-		this.address = address;
-		this.district = district;
-		this.thana = thana;
 		this.description = description;
-		this.catName = catName;
 		this.username = username;
 		this.time = time;
+		this.cat = cat;
 		this.upvote = upvote;
 		this.downvote = downvote;
 	}
-	public Pin(double latitude, double longitude, String name,
-			String address, String district, String thana, String description,
-			String catName, String username, String time, int id, int upvote,
-			int downvote) {
+	public Pin(Location loc, String name, String description, String username,
+			String time, Category cat, int id, int upvote, int downvote) {
 		super();
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.loc = loc;
 		this.name = name;
-		this.address = address;
-		this.district = district;
-		this.thana = thana;
 		this.description = description;
-		this.catName = catName;
 		this.username = username;
 		this.time = time;
+		this.cat = cat;
 		this.id = id;
 		this.upvote = upvote;
 		this.downvote = downvote;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Pin [loc=" + loc + ", name=" + name + ", description="
+				+ description + ", username=" + username + ", time=" + time
+				+ ", cat=" + cat + ", id=" + id + ", upvote=" + upvote
+				+ ", downvote=" + downvote + "]";
+	}
+	public Pin(Parcel in)
+	{
+		readFromParcel(in);
+	}
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		dest.writeParcelable(loc, PARCELABLE_WRITE_RETURN_VALUE);
+		dest.writeString(name);
+		dest.writeString(description);
+		dest.writeString(username);
+		dest.writeString(time);
+		dest.writeParcelable(cat,PARCELABLE_WRITE_RETURN_VALUE);
+		dest.writeInt(id);
+		dest.writeInt(upvote);
+		dest.writeInt(downvote);
+		
+		
+	}
+	private void readFromParcel(Parcel in) 
+	{
+		loc=in.readParcelable(Pin.class.getClassLoader());
+		name=in.readString();
+		description=in.readString();
+		username=in.readString();
+		time=in.readString();
+		cat=in.readParcelable(Pin.class.getClassLoader());
+		id=in.readInt();
+		upvote=in.readInt();
+		downvote=in.readInt();
+	}
+	public static final Parcelable.Creator<Pin> CREATOR=new Parcelable.Creator<Pin>() {
+
+		@Override
+		public Pin createFromParcel(Parcel source) {
+			// TODO Auto-generated method stub
+			return new Pin(source);
+		}
+		@Override
+		public Pin[] newArray(int size) {
+			// TODO Auto-generated method stub
+			return new Pin[size];
+		}
+	};
+	
+	
+	
+	
 	
 }

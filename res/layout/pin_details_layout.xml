@@ -27,14 +27,25 @@
                 android:id="@+id/pin_text_title"
                 android:layout_alignParentLeft="true"
                 android:textColor="@color/text_primary" />
-            
-            <TextView android:layout_width="wrap_content"
+
+            <Button
+                android:id="@+id/pin_button_down_vote"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="Vote count"
-                android:textSize="24dp"
-                android:id="@+id/pin_text_vote"
                 android:layout_alignParentRight="true"
-                android:textColor="@color/text_primary" />
+                android:layout_alignParentTop="true"
+                android:padding="2dp"
+                android:text="DOWN" />
+
+            <Button
+                android:id="@+id/pin_button_up_vote"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="40dp"
+                
+                android:layout_toRightOf="@+id/pin_text_title"
+                android:text="UP" />
             
         </RelativeLayout>
         
@@ -67,13 +78,21 @@
         android:layout_height="80dp"
         android:background="@color/app_grey"
         android:id="@+id/horizontal_list">
-        
-        <TextView android:layout_width="match_parent"
+        <LinearLayout 
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/pin_ll_image_holder">
+        	<TextView android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            
             android:layout_gravity="center"
             android:gravity="center"
             android:id="@+id/pin_text_no_photo"
             android:text="No photos available"/>
+        	    
+        </LinearLayout>
+        
         
     </HorizontalScrollView>
     
@@ -91,6 +110,7 @@
             android:textColor="@color/text_secondary"/>
         
         <TextView android:layout_width="match_parent"
+            android:id="@+id/pin_text_description"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/text_primary"

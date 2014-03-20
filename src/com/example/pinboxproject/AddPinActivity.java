@@ -5,16 +5,8 @@ import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
-
-
-
-import com.example.pinboxproject.AddPinFragment2.SendHandler;
-import com.example.pinboxproject.adapters.PagerAdapter;
-import com.example.pinboxproject.apputils.Base64;
-import com.example.pinboxproject.apputils.MyThread;
-import com.example.pinboxproject.entity.Location;
-import com.example.pinboxproject.entity.Settings;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -26,6 +18,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.widget.Toast;
+
+import com.example.pinboxproject.AddPinFragment2.SendHandler;
+import com.example.pinboxproject.adapters.PagerAdapter;
+import com.example.pinboxproject.apputils.Base64;
+import com.example.pinboxproject.apputils.MyThread;
+import com.example.pinboxproject.entity.Location;
+import com.example.pinboxproject.entity.Settings;
 
 public class AddPinActivity extends FragmentActivity implements AddPinFragment1.DataHandler,SendHandler {
 	
@@ -122,6 +121,14 @@ public class AddPinActivity extends FragmentActivity implements AddPinFragment1.
 			Bundle b=msg.getData();
 			String status=null;
 			System.out.println(b.toString());
+			String response=b.getString("response");
+			if(response.equals("Success"))
+			{
+				Toast.makeText(getApplicationContext(), "Pin Added successfully", Toast.LENGTH_LONG).show();
+				Intent intent=new Intent(AddPinActivity.this,MainActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+			}
 		}
 	};
 

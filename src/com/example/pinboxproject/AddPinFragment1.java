@@ -104,15 +104,22 @@ public class AddPinFragment1 extends Fragment{
 		geocoder = new Geocoder(getActivity().getApplicationContext(), Locale.getDefault());
 		
 		try {
+			
 			addresses = geocoder.getFromLocation(ll.latitude, ll.longitude, 1);
+			System.out.println(addresses);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Address a=addresses.get(0);
-		String address=a.getFeatureName();
-		String thana=a.getSubLocality();
-		String district=a.getSubAdminArea();
+		String address="",thana="",district="";
+		if(addresses!=null)
+		{
+			Address a=addresses.get(0);
+			address=a.getFeatureName();
+			thana=a.getSubLocality();
+			district=a.getSubAdminArea(); 
+		}
+		
 		Location loc=new Location(ll.latitude, ll.longitude, district, thana, address);
 		if(flag==0)
 		{
