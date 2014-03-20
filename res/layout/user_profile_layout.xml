@@ -38,11 +38,38 @@
         
     </LinearLayout>
     
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/profile_view_self"
+        android:visibility="gone" >
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Edit Profile"
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/profile_button_edit_profile"/>
+        
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/blue" />
+        
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=" Add Album "
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/profile_button_add_album"/>
+        
+    </LinearLayout>
+    
+    
     <include layout="@layout/divider_line"/>
     
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,6 +77,10 @@
             android:text="Pins"
             style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/profile_button_pin"/>
+        
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/blue" />
         
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
