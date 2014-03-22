@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -198,6 +197,18 @@ public class PinDetailsActivity extends NavigationActivity implements CommentHan
 					ImageView iv=new ImageView(this);
 					imgLoader.DisplayImage(Settings.ROOT_URL+images.get(i).getThumb_path(), loader, iv);
 					iv.setClickable(true);
+					final int j=i;
+					iv.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View v) {
+							// TODO Auto-generated method stub
+							ImageViewerDialogFragment ivdf=new ImageViewerDialogFragment(images.get(j).getPath());
+							ivdf.show(getSupportFragmentManager(), ""+pin.getName());
+							
+						}
+					});
+					
 					
 					ll.addView(iv);
 				}

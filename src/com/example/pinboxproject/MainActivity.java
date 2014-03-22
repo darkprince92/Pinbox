@@ -28,30 +28,7 @@ public class MainActivity extends NavigationActivity {
 	protected void createView() {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_main);
-		pullData();
-		screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
-		if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_PORTRAIT){
-			columnNumber = 2;
-		}
-		else columnNumber = 3;
 		
-		StaggeredGridView staggeredGrid = (StaggeredGridView)findViewById(R.id.staggeredGridView1);
-		adapter = new StaggeredAdapter(this, screenWidth - 40, staggeredGrid.getColumnCount(),pins);
-		staggeredGrid.setAdapter(adapter);
-		staggeredGrid.setOnItemClickListener(new OnItemClickListener() {
-			
-			@Override
-			public void onItemClick(StaggeredGridView parent, View view, int position,
-					long id) {
-				// TODO Auto-generated method stub
-				Bundle b=new Bundle();
-//				b.putParcelable("pin_data", pins.get(position));
-				Intent intent=new Intent(MainActivity.this,PinDetailsActivity.class);
-				intent.putExtra("pin_data",pins.get(position));
-				startActivity(intent);
-				Toast.makeText(getApplicationContext(), "Position "+position, Toast.LENGTH_LONG).show();
-			}
-		});
 		
 		buttonSearch = (Button)findViewById(R.id.home_button_search);
 		buttonSearch.setOnClickListener(new Button.OnClickListener() {
@@ -90,6 +67,42 @@ public class MainActivity extends NavigationActivity {
 		});
 		
 	}
+	
+	
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.FragmentActivity#onResume()
+	 */
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		pullData();
+		screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
+		if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_PORTRAIT){
+			columnNumber = 2;
+		}
+		else columnNumber = 3;
+		
+		StaggeredGridView staggeredGrid = (StaggeredGridView)findViewById(R.id.staggeredGridView1);
+		adapter = new StaggeredAdapter(this, screenWidth - 40, staggeredGrid.getColumnCount(),pins);
+		staggeredGrid.setAdapter(adapter);
+		staggeredGrid.setOnItemClickListener(new OnItemClickListener() {
+			
+			@Override
+			public void onItemClick(StaggeredGridView parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				Bundle b=new Bundle();
+//				b.putParcelable("pin_data", pins.get(position));
+				Intent intent=new Intent(MainActivity.this,PinDetailsActivity.class);
+				intent.putExtra("pin_data",pins.get(position));
+				startActivity(intent);
+				Toast.makeText(getApplicationContext(), "Position "+position, Toast.LENGTH_LONG).show();
+			}
+		});
+	}
+
+
 	private void pullData()
 	{
 		mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
