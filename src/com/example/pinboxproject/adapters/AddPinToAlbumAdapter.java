@@ -1,5 +1,7 @@
 package com.example.pinboxproject.adapters;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,33 +13,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pinboxproject.R;
+import com.example.pinboxproject.entity.Pin;
 
 public class AddPinToAlbumAdapter extends BaseAdapter{
 	
 	//private ArrayList<CommentData> commentData;
 	//ArrayList<IncidentComment> comments;
 	private Activity activity;
+	private ArrayList<Pin> userPins;
 	
-	public AddPinToAlbumAdapter(Activity activity){
+	public AddPinToAlbumAdapter(Activity activity, ArrayList<Pin> pins){
 		this.activity = activity;
+		this.userPins = pins;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 5;
+		return userPins.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return null;
+		return userPins.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return position;
+		return userPins.get(position).getId();
 	}
 
 	@Override
@@ -62,6 +67,10 @@ public class AddPinToAlbumAdapter extends BaseAdapter{
 		}else{			
 			viewHolder = (ViewHolder)convertView.getTag();
 		}
+		
+		viewHolder.pinTitle.setText(userPins.get(position).getName());
+		viewHolder.pinCategory.setText(userPins.get(position).getCat().getCatName());
+		
 		return convertView;
 	}
 	

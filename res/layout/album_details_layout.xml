@@ -27,7 +27,8 @@
             android:id="@+id/album_text_description"
             android:maxLines="6"
             android:textColor="@color/text_primary"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal" />
         
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
