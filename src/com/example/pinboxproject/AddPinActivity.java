@@ -1,11 +1,13 @@
 package com.example.pinboxproject;
 
 import java.io.ByteArrayOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
@@ -22,8 +24,11 @@ import android.widget.Toast;
 import com.example.pinboxproject.AddPinFragment2.SendHandler;
 import com.example.pinboxproject.adapters.PagerAdapter;
 import com.example.pinboxproject.apputils.Base64;
+import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
 import com.example.pinboxproject.apputils.MyThread;
+import com.example.pinboxproject.entity.Category;
 import com.example.pinboxproject.entity.Location;
+import com.example.pinboxproject.entity.Pin;
 import com.example.pinboxproject.entity.Settings;
 
 public class AddPinActivity extends FragmentActivity implements AddPinFragment1.DataHandler,SendHandler {
@@ -99,6 +104,7 @@ public class AddPinActivity extends FragmentActivity implements AddPinFragment1.
 	@Override
 	public void sendData(String title, int catId, Location loc) {
 		// TODO Auto-generated method stub
+		insertIntoSqlite(title, catId, loc, "");
 		pd=ProgressDialog.show(AddPinActivity.this,"","Adding Pin...",true,false);
 		sendData=new ArrayList<NameValuePair>();
 		sendData.add(new BasicNameValuePair("name", title));
@@ -131,11 +137,28 @@ public class AddPinActivity extends FragmentActivity implements AddPinFragment1.
 			}
 		}
 	};
+	
+	private void insertIntoSqlite(String title, int catId, Location loc,String desc)
+	{
+		Pin p;
+		Category c=new Category(catId, "");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+	    //get current date time with Date()
+		Date date = new Date();
+		String dateStr=dateFormat.format(date);
+		p=new Pin(loc, title, desc, Settings.loggedUser.getId()+"", dateStr, c, 0, 0);
+		MyPrePopulatedDBHelper mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		mdh.insertPin(p);
+		
+		
+	}
 
 	@Override
 	public void sendDataWithAdditional(String title, int catId, Location loc,
 			String desc, String tags, String imageStr) {
 		// TODO Auto-generated method stub
+		insertIntoSqlite(title, catId, loc, desc);
+		
 		pd=ProgressDialog.show(AddPinActivity.this,"","Adding Pin...",true,false);
 		sendData=new ArrayList<NameValuePair>();
 		sendData.add(new BasicNameValuePair("name", title));

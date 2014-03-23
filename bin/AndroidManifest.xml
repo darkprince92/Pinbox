@@ -36,14 +36,16 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <!-- pato api key -->
+        <!-- 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyB27Smusmw221p_5wezIRujcIYwa2clKh4" />
+         -->
 		<!-- nati api key -->
-        <!-- <meta-data
+         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDX5YmFve1pfQM8JtRvnm3i4vYGbkvbE1g" />
-         -->
+        
         <activity
             android:name="com.example.pinboxproject.MainActivity"
             android:label="@string/app_name" >
@@ -56,6 +58,11 @@
             </intent-filter>
  -->            
 
+<<<<<<< HEAD
+=======
+
+            
+>>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
 
         </activity>
         <activity

@@ -7,16 +7,18 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import com.example.pinboxproject.entity.Category;
-import com.example.pinboxproject.entity.Location;
-import com.example.pinboxproject.entity.Pin;
-
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.pinboxproject.entity.Category;
+import com.example.pinboxproject.entity.Location;
+import com.example.pinboxproject.entity.Pin;
+import com.example.pinboxproject.entity.Settings;
 
 public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	public static String DB_PATH;
@@ -296,7 +298,80 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	//return null;
 	    }
 
-	@Override
+	    public ArrayList<Pin> getAllLocations(int limit)
+	    {
+	    	ArrayList<Pin> pins=new ArrayList<Pin>();
+	    	ArrayList<Integer> catIds=new ArrayList<Integer>();
+	    	if(this.database==null)
+	    	{
+	    		openDataBase();
+	    	}
+	    	SQLiteDatabase db=this.database;
+	    	String limitStr="0,"+limit;
+	    	String col[]={"LOCATION_NAME","LOCATION_ID","LATITUDE","LONGITUDE"};
+	    	Cursor c=db.query("pin_location", col, null, null, null, null,"PINNING_TIME DESC",limitStr);
+	    	
+	    	
+	    	if(c!=null && c.getCount()>0)
+			{
+	    		c.moveToFirst();
+	    		for(int i=0;i<c.getCount();i++)
+				{
+	    			Location loc;
+//	    			Category cat;
+	    			Pin pin; 
+	    			
+	    			int id=c.getInt(c.getColumnIndex("LOCATION_ID"));
+	    			double lat=c.getDouble(c.getColumnIndex("LATITUDE"));
+	    			double lng=c.getDouble(c.getColumnIndex("LONGITUDE"));
+	    			loc=new Location(lat,lng,"","","");
+	    			
+	    			
+//	    			cat=getCat(catId);
+//	    			loc=getLocation(id);
+	    			
+	    			String name=c.getString(c.getColumnIndex("LOCATION_NAME"));
+	    			
+	    			
+	    			
+	    			pin=new Pin(loc, name, null, "admin", null, null, id, 0, 0);
+	    			pins.add(pin);
+	    			c.moveToNext();
+	    			
+				}
+	    		
+			
+			}
+	    	c.close();
+	    	
+	    	this.database.close();
+			
+	    	return pins;
+	    }
+	    
+	    public boolean insertPin(Pin p)
+	    {
+	    	SQLiteDatabase db=this.database;
+	    	ContentValues values = new ContentValues();
+	    	values.put("DESCRIPTION", p.getDescription());
+	    	values.put("LOCATION_NAME", p.getName());
+	    	values.put("USER_ID", Settings.loggedUser.getId());
+	    	values.put("CATEGORY_ID", p.getCat().getId());
+	    	values.put("LONGITUDE", p.getLoc().getLongitude());
+	    	values.put("LATITUDE", p.getLoc().getLatitude());
+	    	values.put("PINNING_TIME", p.getTime());
+	    	values.put("location_address", p.getLoc().getAddress());
+	    	values.put("district", p.getLoc().getDistrict());
+	    	values.put("thana", p.getLoc().getThana());
+	    	values.put("up_vote",0);
+	    	values.put("down_vote", 0);
+	    	
+	    	long id=db.insert("pin_location", null, values);
+	    	System.out.println("last inserted id :"+id);
+	    	db.close();
+	    	return true;
+	    }
+	    @Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
 		

@@ -1,5 +1,8 @@
 package com.example.pinboxproject;
 
+import com.example.pinboxproject.apputils.ImageLoader;
+import com.example.pinboxproject.entity.Settings;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,9 +10,16 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 
 public class ImageViewerDialogFragment extends DialogFragment{
 	
+	String imagePath;
+	ImageView iv;
+	public ImageViewerDialogFragment(String path)
+	{
+		this.imagePath=path;
+	}
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 	    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	    // Get the layout inflater
@@ -18,6 +28,12 @@ public class ImageViewerDialogFragment extends DialogFragment{
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
 	    View view = inflater.inflate(R.layout.image_viewer_layout, null);
+	    
+	    iv=(ImageView)view.findViewById(R.id.image_viewer_image);
+	    ImageLoader imgLoader=new ImageLoader(getActivity().getApplicationContext());
+		int loader=R.drawable.ic_launcher;
+		imgLoader.DisplayImage(Settings.ROOT_URL+this.imagePath, loader, iv);
+		
 	    builder.setView(view).setTitle("Image");
 	    	      
 	    // Add action buttons
