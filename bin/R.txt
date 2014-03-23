@@ -96,8 +96,9 @@ int drawable sample_4 0x7f020035
 int drawable sample_5 0x7f020036
 int drawable sample_6 0x7f020037
 int drawable sample_7 0x7f020038
-int drawable tab_button_back 0x7f020039
-int drawable tab_button_normal 0x7f02003a
+int drawable splash 0x7f020039
+int drawable tab_button_back 0x7f02003a
+int drawable tab_button_normal 0x7f02003b
 int id action_logout 0x7f05007e
 int id action_profile 0x7f05007d
 int id action_settings 0x7f05007b
