@@ -21,6 +21,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -58,8 +60,17 @@ public abstract class NavigationActivity extends FragmentActivity {
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView)findViewById(R.id.left_drawer);
 		mDrawerLayout.setScrimColor(Color.TRANSPARENT);
-		mDrawerList.setAdapter(new NavigationListAdapter(this));
-		
+		NavigationListAdapter drawerAdapter = new NavigationListAdapter(this);
+		mDrawerList.setAdapter(drawerAdapter);
+		mDrawerList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		mDrawerToggle = new ActionBarDrawerToggle(this, 
 				mDrawerLayout, 

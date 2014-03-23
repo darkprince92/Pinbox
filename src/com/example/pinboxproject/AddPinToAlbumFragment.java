@@ -1,7 +1,6 @@
 package com.example.pinboxproject;
 
-import com.example.pinboxproject.adapters.AddPinToAlbumAdapter;
-import com.example.pinboxproject.adapters.CommentListAdapter;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,8 +10,12 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
+
+import com.example.pinboxproject.adapters.AddPinToAlbumAdapter;
+import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
+import com.example.pinboxproject.entity.Pin;
+import com.example.pinboxproject.entity.Settings;
 
 public class AddPinToAlbumFragment extends DialogFragment{
 	
@@ -23,8 +26,13 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	//ArrayList<IncidentComment> comments;
 	//CommentHandler commentHandler;
 	
+	ArrayList<Pin> pins;
+	
 	public AddPinToAlbumFragment(Activity activity){
 		this.activity = activity;
+		
+		MyPrePopulatedDBHelper dbHelper = new MyPrePopulatedDBHelper(activity, "tik");
+		pins = dbHelper.getUserPins(Settings.loggedUser.getId());
 		//this.comments=c;
 	}
 	
@@ -52,7 +60,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 		});
 	    
 	    pinListView = (ListView)view.findViewById(R.id.add_pin_to_album_list);
-	    pinsAdapter = new AddPinToAlbumAdapter(activity);
+	    pinsAdapter = new AddPinToAlbumAdapter(activity, pins);
 	    pinListView.setAdapter(pinsAdapter);
 	    
 	    // Add action buttons    

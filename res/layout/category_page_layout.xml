@@ -4,9 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView android:layout_width="match_parent"
+    <GridView android:id="@+id/category_grid"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Here will be a LAME grid view"
-        android:textSize="40dp"/>
+        android:numColumns="3"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:stretchMode="columnWidth"></GridView>
 
 </LinearLayout>
