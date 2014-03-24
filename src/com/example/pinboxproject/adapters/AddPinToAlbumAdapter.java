@@ -60,14 +60,17 @@ public class AddPinToAlbumAdapter extends BaseAdapter{
 		final int childPos=position;
 		final PinFilterer filterer = (PinFilterer)activity;
 		ImageView imagePin;
-		TextView pinTitle;
-		TextView pinCategory;
-		final CheckBox checkBox;
+		TextView pinTitle = null;
+		TextView pinCategory = null;
+		CheckBox checkBox =null;
+		final CheckBox tempCheck;
 		
 		if(convertView == null){
 			//<-----With ViewHolder---->
 			LayoutInflater inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			vi = inflater.inflate(R.layout.add_pin_item, null);
+			
+			
 			
 //			viewHolder = new ViewHolder();
 //			viewHolder.imagePin = (ImageView)convertView.findViewById(R.id.add_pin_to_album_image);
@@ -86,15 +89,21 @@ public class AddPinToAlbumAdapter extends BaseAdapter{
 		checkBox = (CheckBox)vi.findViewById(R.id.add_pin_to_album_check_box);
 		pinTitle = (TextView)vi.findViewById(R.id.add_pin_to_album_text_title);
 		pinCategory = (TextView)vi.findViewById(R.id.add_pin_to_album_text_category);
-		
-//		viewHolder.checkBox.setChecked(pinCheck.get(position));
+		tempCheck=checkBox;
+		System.out.println("pos: "+childPos+" status: "+pinCheck.get(childPos));
+		checkBox.setChecked(pinCheck.get(position));
 		checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
-				System.out.println(childPos);
-				pinCheck.set(childPos, isChecked);
+				if(buttonView.isShown())
+				{
+					
+					System.out.println(childPos+"is to "+isChecked);
+					pinCheck.set(childPos, isChecked);
+				}
+				
 				
 				filterer.filterPin(pinCheck);
 				
@@ -108,12 +117,12 @@ public class AddPinToAlbumAdapter extends BaseAdapter{
 				
 				if(pinCheck.get(childPos) == true)
 				{
-					checkBox.setChecked(false);
+					tempCheck.setChecked(false);
 					pinCheck.set(childPos, false);
 				}
 				else if(pinCheck.get(childPos) == false)
 				{
-					checkBox.setChecked(true);
+					tempCheck.setChecked(true);
 					pinCheck.set(childPos, true);
 				}
 				

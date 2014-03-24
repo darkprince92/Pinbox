@@ -61,7 +61,8 @@ public class AddPinToAlbumFragment extends DialogFragment{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				addAlbum();
+				getAlbum();
+				
 			}
 		});
 	    
@@ -102,6 +103,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	private void getAlbum()
 	{
 		pinHandlerObj.getAddedPins(pinList);
+		this.dismiss();
 	}
 	public void getPins(ArrayList<Boolean> pinCheckList)
 	{

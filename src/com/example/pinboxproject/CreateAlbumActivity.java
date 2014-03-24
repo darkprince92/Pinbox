@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -93,7 +94,7 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	
 	
 	private void save(){
-		
+		sendData();
 	}
 
 	@Override
@@ -110,8 +111,10 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	}
 	private void sendData()
 	{
+		getData();
 		insertAlbumLocally();
-		pd=ProgressDialog.show(getApplicationContext(), "Creating album", null);
+		
+		pd=ProgressDialog.show(CreateAlbumActivity.this, "Creating album", null);
 		ArrayList<NameValuePair> dataToSend=new ArrayList<NameValuePair>();
 		dataToSend.add(new BasicNameValuePair("user_id", ""+Settings.loggedUser.getId()));
 		dataToSend.add(new BasicNameValuePair("locs", ""+pinList));
@@ -131,8 +134,8 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	public void getAddedPins(String pins) {
 		// TODO Auto-generated method stub
 		pinList=pins;
-		getData();
-		sendData();
+		
+		
 	}
 	
 	Handler handler=new Handler()
@@ -144,14 +147,20 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 			Bundle b=msg.getData();
 			String status=null;
 			System.out.println(b.toString());
-			String response=b.getString("response");
-			if(response.equals("success"))
-			{
-				Toast.makeText(getApplicationContext(), "Album Added successfully", Toast.LENGTH_LONG).show();
-				Intent intent=new Intent(CreateAlbumActivity.this,UserProfileActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
+			try {
+				responseObj=new JSONObject(b.getString("response"));
+				if(responseObj.getString("response").equals("success"))
+				{
+					Toast.makeText(getApplicationContext(), "Album Added successfully", Toast.LENGTH_LONG).show();
+					Intent intent=new Intent(CreateAlbumActivity.this,UserProfileActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
 		}
 	};
 }
