@@ -8,6 +8,7 @@ import java.util.List;
 import com.example.pinboxproject.adapters.NavigationListAdapter;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -34,7 +35,7 @@ public abstract class NavigationActivity extends FragmentActivity {
 	
 	protected ActionBar actionBar;
 	protected Bundle bundle;
-	protected String[] mItems;
+	protected String[] mItems = {"Home", "Category", "Map", "Add Pin", "Search", "Help", "About Us"};
 	protected DrawerLayout mDrawerLayout;
 	protected ListView mDrawerList;
 	protected CharSequence appTitle;
@@ -60,7 +61,7 @@ public abstract class NavigationActivity extends FragmentActivity {
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView)findViewById(R.id.left_drawer);
 		mDrawerLayout.setScrimColor(Color.TRANSPARENT);
-		NavigationListAdapter drawerAdapter = new NavigationListAdapter(this);
+		NavigationListAdapter drawerAdapter = new NavigationListAdapter(this, mItems);
 		mDrawerList.setAdapter(drawerAdapter);
 		mDrawerList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -68,6 +69,28 @@ public abstract class NavigationActivity extends FragmentActivity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
+				//"Home", "Category", "Map", "Add Pin", "Search", "Help", "About Us"
+				switch(position){
+				case 0:
+					gotoActivity(MainActivity.class);
+					break;
+				case 1:
+					gotoActivity(CategoryActivity.class);
+					break;
+				case 2:
+					gotoActivity(MapActivity.class);	
+					break;
+				case 3:
+					gotoActivity(AddPinActivity.class);
+					break;
+				case 4:
+					gotoActivity(SearchActivity.class);
+					break;
+				case 5:
+					
+					break;
+					
+				}
 				
 			}
 		});
@@ -153,5 +176,11 @@ public abstract class NavigationActivity extends FragmentActivity {
 	@Override
 	public void setTitle(CharSequence title){
 		getActionBar().setTitle(title);
+	}
+	
+	private void gotoActivity(Class<?> activityTo){
+		Intent intent = new Intent(NavigationActivity.this, activityTo);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 	}
 }

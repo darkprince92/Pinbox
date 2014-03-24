@@ -309,7 +309,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	SQLiteDatabase db=this.database;
 	    	String limitStr="0,"+limit;
 	    	String col[]={"LOCATION_NAME","LOCATION_ID","LATITUDE","LONGITUDE"};
-	    	Cursor c=db.query("pin_location", col, null, null, null, null,"PINNING_TIME DESC",limitStr);
+	    	Cursor c=db.query("pin_location", null, null, null, null, null,"PINNING_TIME DESC",limitStr);
 	    	
 	    	
 	    	if(c!=null && c.getCount()>0)
@@ -325,22 +325,15 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    			double lat=c.getDouble(c.getColumnIndex("LATITUDE"));
 	    			double lng=c.getDouble(c.getColumnIndex("LONGITUDE"));
 	    			loc=new Location(lat,lng,"","","");
-	    			
-	    			
-//	    			cat=getCat(catId);
-//	    			loc=getLocation(id);
-	    			
-	    			String name=c.getString(c.getColumnIndex("LOCATION_NAME"));
-	    			
-	    			
+	    			    			
+	    			String name=c.getString(c.getColumnIndex("LOCATION_NAME"));	    			
 	    			
 	    			pin=new Pin(loc, name, null, "admin", null, null, id, 0, 0);
 	    			pins.add(pin);
 	    			c.moveToNext();
 	    			
 				}
-	    		
-			
+	    				
 			}
 	    	c.close();
 	    	
@@ -380,6 +373,65 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public ArrayList<Pin> pinSearch(String str){
+		
+		ArrayList<Pin> pins=new ArrayList<Pin>();
+    	ArrayList<Integer> catIds=new ArrayList<Integer>();
+    	if(this.database==null)
+    	{
+    		openDataBase();
+    	}
+    	SQLiteDatabase db=this.database;
+    	String col[]={"CATEGORY_ID","LOCATION_NAME","LOCATION_ID"};
+    	String s = "LOCATION_NAME LIKE" + "'%" + str + "%'";
+    	s += " OR location_address" + "'%" + str + "%'";
+    	s += " OR district" + "'%" + str + "%'";
+    	s += " OR thana" + "'%" + str + "%'";
+    	Cursor c=db.query("pin_location", col,  s , null, null, null,"PINNING_TIME DESC","0,50");
+    	
+    	
+    	if(c!=null && c.getCount()>0)
+		{
+    		c.moveToFirst();
+    		for(int i=0;i<c.getCount();i++)
+			{
+//    			Location loc;
+//    			Category cat;
+    			Pin pin; 
+    			int catId=c.getInt(c.getColumnIndex("CATEGORY_ID"));
+    			int id=c.getInt(c.getColumnIndex("LOCATION_ID"));
+    			catIds.add(catId);
+//    			cat=getCat(catId);
+//    			loc=getLocation(id);
+    			
+    			String name=c.getString(c.getColumnIndex("LOCATION_NAME"));
+    			
+    			String desc=c.getString(c.getColumnIndex("DESCRIPTION"));
+    			String pin_time=c.getString(c.getColumnIndex("PINNING_TIME"));
+    			int upVote=c.getInt(c.getColumnIndex("up_vote"));
+    			int downVote=c.getInt(c.getColumnIndex("down_vote"));
+    			
+    			pin=new Pin(null, name, desc, "admin", pin_time, null, id, upVote, downVote);
+    			pins.add(pin);
+    			c.moveToNext();	    			
+			}			
+		}
+    	c.close();
+    	
+    	for(int i=0;i<pins.size();i++)
+    	{
+    		Pin p=pins.get(i);
+    		Location loc=getLocation(p.getId());
+    		Category cat=getCat(catIds.get(i));
+    		pins.get(i).setLoc(loc);
+    		pins.get(i).setCat(cat);
+    	}
+    	//this.database.close();
+		
+    	return pins;
 		
 	}
 

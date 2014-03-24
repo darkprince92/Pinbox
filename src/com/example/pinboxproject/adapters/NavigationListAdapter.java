@@ -20,12 +20,13 @@ import android.widget.TextView;
 public class NavigationListAdapter extends BaseAdapter{
 	
 	private Activity activity;
+	private String[] items;
 	private ArrayList<String> itemList;
 	private Context context;
 	
-	public NavigationListAdapter(Context context){
+	public NavigationListAdapter(Context context, String[] items){
 		this.context = context;
-		
+		this.items = items;
 		initData();
 	}
 
@@ -33,13 +34,9 @@ public class NavigationListAdapter extends BaseAdapter{
 		// TODO Auto-generated method stub
 		
 		itemList = new ArrayList<String>();
-		itemList.add("Home");
-		itemList.add("Category");
-		itemList.add("Map");
-		itemList.add("Add Pin");
-		itemList.add("Search");
-		itemList.add("Help");
-		itemList.add("About Us");		
+		for(int i = 0;i<items.length;i++){
+			itemList.add(items[i]);
+		}
 	}
 
 	@Override
