@@ -10,6 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.example.pinboxproject.adapters.PagerAdapter;
+import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
+import com.example.pinboxproject.entity.Pin;
+import com.example.pinboxproject.entity.Settings;
 
 
 public class UserProfileActivity extends NavigationActivity {
@@ -20,6 +23,8 @@ public class UserProfileActivity extends NavigationActivity {
 	private Button buttonAddAlbum;
 	private ViewPager pager;
 	private PagerAdapter pagerAdapter;
+	MyPrePopulatedDBHelper mdh;
+	ArrayList<Pin> userPins;
 	
 	private static final int SELF_USER_MODE = 0;
 	private static final int GUEST_USER_MODE = 1;
@@ -44,9 +49,10 @@ public class UserProfileActivity extends NavigationActivity {
 		
 		userMode = SELF_USER_MODE;
 		
+		pullData();
 		pager = (ViewPager)findViewById(R.id.profile_pager);
 		ArrayList<Fragment> fragments = new ArrayList<Fragment>();
-		fragments.add(new ProfilePinsFragment(this));
+		fragments.add(new ProfilePinsFragment(userPins));
 		fragments.add(new ProfileAlbumsFragment(this));
 		pagerAdapter = new PagerAdapter(getSupportFragmentManager(), this, fragments);
 		pager.setAdapter(pagerAdapter);
@@ -102,6 +108,11 @@ public class UserProfileActivity extends NavigationActivity {
 				
 	}
 	
+	private void pullData()
+	{
+		mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		userPins=mdh.getUserPins(Settings.loggedUser.getId());
+	}
 	private void selectFragment(int pos){
 		pager.setCurrentItem(pos);		
 	}

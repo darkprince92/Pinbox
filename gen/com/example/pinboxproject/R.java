@@ -233,7 +233,6 @@ containing a value of this type.
         public static final int ic_add_pin=0x7f020022;
         public static final int ic_add_pin_home=0x7f020023;
         public static final int ic_album_dark=0x7f020024;
-<<<<<<< HEAD
         public static final int ic_bank=0x7f020025;
         public static final int ic_delete=0x7f020026;
         public static final int ic_edit_dark=0x7f020027;
@@ -245,27 +244,29 @@ containing a value of this type.
         public static final int ic_launcher=0x7f02002d;
         public static final int ic_map_dark=0x7f02002e;
         public static final int ic_map_home=0x7f02002f;
-        public static final int ic_map_pin=0x7f020030;
-        public static final int ic_navigation_drawer=0x7f020031;
-        public static final int ic_others=0x7f020032;
-        public static final int ic_pin_dark=0x7f020033;
-        public static final int ic_police=0x7f020034;
-        public static final int ic_restaurant=0x7f020035;
-        public static final int ic_shopping=0x7f020036;
-        public static final int ic_subscribe=0x7f020037;
-        public static final int ic_transport=0x7f020038;
-        public static final int ic_users_dark=0x7f020039;
-        public static final int login=0x7f02003a;
-        public static final int sample_0=0x7f02003b;
-        public static final int sample_1=0x7f02003c;
-        public static final int sample_2=0x7f02003d;
-        public static final int sample_3=0x7f02003e;
-        public static final int sample_4=0x7f02003f;
-        public static final int sample_5=0x7f020040;
-        public static final int sample_6=0x7f020041;
-        public static final int sample_7=0x7f020042;
-        public static final int tab_button_back=0x7f020043;
-        public static final int tab_button_normal=0x7f020044;
+        public static final int ic_map_marker=0x7f020030;
+        public static final int ic_map_pin=0x7f020031;
+        public static final int ic_navigation_drawer=0x7f020032;
+        public static final int ic_others=0x7f020033;
+        public static final int ic_pin_dark=0x7f020034;
+        public static final int ic_police=0x7f020035;
+        public static final int ic_restaurant=0x7f020036;
+        public static final int ic_shopping=0x7f020037;
+        public static final int ic_subscribe=0x7f020038;
+        public static final int ic_transport=0x7f020039;
+        public static final int ic_users_dark=0x7f02003a;
+        public static final int login=0x7f02003b;
+        public static final int sample_0=0x7f02003c;
+        public static final int sample_1=0x7f02003d;
+        public static final int sample_2=0x7f02003e;
+        public static final int sample_3=0x7f02003f;
+        public static final int sample_4=0x7f020040;
+        public static final int sample_5=0x7f020041;
+        public static final int sample_6=0x7f020042;
+        public static final int sample_7=0x7f020043;
+        public static final int splash=0x7f020044;
+        public static final int tab_button_back=0x7f020045;
+        public static final int tab_button_normal=0x7f020046;
     }
     public static final class id {
         public static final int action_logout=0x7f050081;
@@ -282,54 +283,12 @@ containing a value of this type.
         public static final int add_pin_pager=0x7f050005;
         public static final int add_pin_spinner_category=0x7f050034;
         public static final int add_pin_text_additional=0x7f050035;
-=======
-        public static final int ic_delete=0x7f020025;
-        public static final int ic_edit_dark=0x7f020026;
-        public static final int ic_launcher=0x7f020027;
-        public static final int ic_map_dark=0x7f020028;
-        public static final int ic_map_home=0x7f020029;
-        public static final int ic_map_marker=0x7f02002a;
-        public static final int ic_map_pin=0x7f02002b;
-        public static final int ic_navigation_drawer=0x7f02002c;
-        public static final int ic_pin_dark=0x7f02002d;
-        public static final int ic_subscribe=0x7f02002e;
-        public static final int ic_users_dark=0x7f02002f;
-        public static final int login=0x7f020030;
-        public static final int sample_0=0x7f020031;
-        public static final int sample_1=0x7f020032;
-        public static final int sample_2=0x7f020033;
-        public static final int sample_3=0x7f020034;
-        public static final int sample_4=0x7f020035;
-        public static final int sample_5=0x7f020036;
-        public static final int sample_6=0x7f020037;
-        public static final int sample_7=0x7f020038;
-        public static final int splash=0x7f020039;
-        public static final int tab_button_back=0x7f02003a;
-        public static final int tab_button_normal=0x7f02003b;
-    }
-    public static final class id {
-        public static final int action_logout=0x7f05007e;
-        public static final int action_profile=0x7f05007d;
-        public static final int action_settings=0x7f05007b;
-        public static final int action_user=0x7f05007c;
-        public static final int add_pin_button_add_2=0x7f050039;
-        public static final int add_pin_button_add_image=0x7f050035;
-        public static final int add_pin_button_back=0x7f050038;
-        public static final int add_pin_edittext_description=0x7f050036;
-        public static final int add_pin_edittext_tags=0x7f050037;
-        public static final int add_pin_edittext_title=0x7f050030;
-        public static final int add_pin_map_fragment=0x7f050033;
-        public static final int add_pin_pager=0x7f050005;
-        public static final int add_pin_spinner_category=0x7f050031;
-        public static final int add_pin_text_additional=0x7f050032;
->>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
         public static final int add_pin_to_album_add=0x7f05001f;
         public static final int add_pin_to_album_check_box=0x7f050023;
         public static final int add_pin_to_album_image=0x7f050020;
         public static final int add_pin_to_album_list=0x7f05001e;
         public static final int add_pin_to_album_text_category=0x7f050022;
         public static final int add_pin_to_album_text_title=0x7f050021;
-<<<<<<< HEAD
         public static final int album_grid_image=0x7f05004b;
         public static final int album_staggeredGridView=0x7f050025;
         public static final int album_text_description=0x7f050024;
@@ -338,13 +297,6 @@ containing a value of this type.
         public static final int category_grid=0x7f050028;
         public static final int category_item_image=0x7f050026;
         public static final int category_item_title=0x7f050027;
-=======
-        public static final int album_grid_image=0x7f050048;
-        public static final int album_staggeredGridView=0x7f050025;
-        public static final int album_text_description=0x7f050024;
-        public static final int app_pin_button_add=0x7f050034;
-        public static final int button_add_comment=0x7f050028;
->>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
         public static final int content_frame=0x7f050007;
         public static final int create_album_button_app_pins=0x7f05000b;
         public static final int create_album_button_save=0x7f05000d;
@@ -352,18 +304,13 @@ containing a value of this type.
         public static final int create_album_edittext_title=0x7f050009;
         public static final int create_album_grid_pins=0x7f05000c;
         public static final int drawer_layout=0x7f050006;
-<<<<<<< HEAD
         public static final int editText_comment=0x7f05002a;
-=======
-        public static final int editText_comment=0x7f050027;
->>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
         public static final int edit_profile_button_change_pic=0x7f05000f;
         public static final int edit_profile_button_save=0x7f050013;
         public static final int edit_profile_edittext_about=0x7f050012;
         public static final int edit_profile_edittext_email=0x7f050010;
         public static final int edit_profile_edittext_location=0x7f050011;
         public static final int edit_profile_edittext_name=0x7f05000e;
-<<<<<<< HEAD
         public static final int home_button_add_pin=0x7f05004d;
         public static final int home_button_map=0x7f05004e;
         public static final int home_button_search=0x7f05004c;
@@ -376,25 +323,10 @@ containing a value of this type.
         public static final int layout_add_comment=0x7f050029;
         public static final int left_drawer=0x7f050008;
         public static final int listView_comments=0x7f05002d;
-=======
-        public static final int home_button_add_pin=0x7f05004a;
-        public static final int home_button_map=0x7f05004b;
-        public static final int home_button_search=0x7f050049;
-        public static final int horizontal_list=0x7f050055;
-        public static final int hybrid=0x7f050004;
-        public static final int imageView1=0x7f05001d;
-        public static final int image_item=0x7f05006f;
-        public static final int image_nav_icon=0x7f05002e;
-        public static final int image_viewer_image=0x7f05004d;
-        public static final int layout_add_comment=0x7f050026;
-        public static final int left_drawer=0x7f050008;
-        public static final int listView_comments=0x7f05002a;
->>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
         public static final int login_button_login=0x7f050017;
         public static final int login_button_signup=0x7f050016;
         public static final int login_edittext_password=0x7f050015;
         public static final int login_edittext_username=0x7f050014;
-<<<<<<< HEAD
         public static final int map_activity_fragment=0x7f050051;
         public static final int no_comment_layout=0x7f05002c;
         public static final int none=0x7f050000;
@@ -453,72 +385,11 @@ containing a value of this type.
         public static final int search_user_text_email=0x7f050071;
         public static final int search_user_text_name=0x7f050070;
         public static final int search_view=0x7f050082;
-=======
-        public static final int map_activity_fragment=0x7f05004e;
-        public static final int no_comment_layout=0x7f050029;
-        public static final int none=0x7f050000;
-        public static final int normal=0x7f050001;
-        public static final int pin_button_add_tag=0x7f050059;
-        public static final int pin_button_comment=0x7f05005b;
-        public static final int pin_button_down_vote=0x7f050051;
-        public static final int pin_button_report=0x7f05005a;
-        public static final int pin_button_up_vote=0x7f050052;
-        public static final int pin_details_map_fragment=0x7f05004f;
-        public static final int pin_ll_image_holder=0x7f050056;
-        public static final int pin_text_category=0x7f050053;
-        public static final int pin_text_description=0x7f050058;
-        public static final int pin_text_no_photo=0x7f050057;
-        public static final int pin_text_title=0x7f050050;
-        public static final int pin_text_user=0x7f050054;
-        public static final int profile_button_add_album=0x7f050077;
-        public static final int profile_button_album=0x7f050079;
-        public static final int profile_button_edit_profile=0x7f050076;
-        public static final int profile_button_pin=0x7f050078;
-        public static final int profile_grid_album=0x7f05003a;
-        public static final int profile_image=0x7f050072;
-        public static final int profile_pager=0x7f05007a;
-        public static final int profile_staggeredGridView=0x7f05003b;
-        public static final int profile_text_email=0x7f050074;
-        public static final int profile_text_username=0x7f050073;
-        public static final int profile_view_self=0x7f050075;
-        public static final int satellite=0x7f050002;
-        public static final int search_album_image=0x7f05005c;
-        public static final int search_album_list=0x7f05003e;
-        public static final int search_album_spinner_sort=0x7f05003d;
-        public static final int search_album_text_address=0x7f05005e;
-        public static final int search_album_text_comment=0x7f05005f;
-        public static final int search_album_text_rating=0x7f050060;
-        public static final int search_album_text_title=0x7f05005d;
-        public static final int search_button_albums=0x7f050062;
-        public static final int search_button_map=0x7f050064;
-        public static final int search_button_pins=0x7f050061;
-        public static final int search_button_users=0x7f050063;
-        public static final int search_map_fragment=0x7f050041;
-        public static final int search_map_spinner_category=0x7f050040;
-        public static final int search_map_spinner_location=0x7f05003f;
-        public static final int search_pager=0x7f050065;
-        public static final int search_pin_image=0x7f050066;
-        public static final int search_pin_list=0x7f050045;
-        public static final int search_pin_spinner_category=0x7f050044;
-        public static final int search_pin_spinner_sort=0x7f050042;
-        public static final int search_pin_text_address=0x7f050068;
-        public static final int search_pin_text_category=0x7f05006b;
-        public static final int search_pin_text_comment=0x7f050069;
-        public static final int search_pin_text_rating=0x7f05006a;
-        public static final int search_pin_text_title=0x7f050067;
-        public static final int search_user_image=0x7f05006c;
-        public static final int search_user_list=0x7f050047;
-        public static final int search_user_spinner_location=0x7f050046;
-        public static final int search_user_text_email=0x7f05006e;
-        public static final int search_user_text_name=0x7f05006d;
-        public static final int search_view=0x7f05007f;
->>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
         public static final int signup_button_signup=0x7f05001c;
         public static final int signup_edittext_confrm_password=0x7f05001b;
         public static final int signup_edittext_email=0x7f050019;
         public static final int signup_edittext_password=0x7f05001a;
         public static final int signup_edittext_username=0x7f050018;
-<<<<<<< HEAD
         public static final int staggeredGridView1=0x7f05004f;
         public static final int terrain=0x7f050003;
         public static final int text_category_select=0x7f050046;
@@ -529,18 +400,6 @@ containing a value of this type.
         public static final int text_nav_title=0x7f050032;
         public static final int text_sort_by=0x7f05003f;
         public static final int text_view_comment_comment=0x7f050030;
-=======
-        public static final int staggeredGridView1=0x7f05004c;
-        public static final int terrain=0x7f050003;
-        public static final int text_category_select=0x7f050043;
-        public static final int text_comment_date=0x7f05002c;
-        public static final int text_comment_name=0x7f05002b;
-        public static final int text_item_category=0x7f050071;
-        public static final int text_item_title=0x7f050070;
-        public static final int text_nav_title=0x7f05002f;
-        public static final int text_sort_by=0x7f05003c;
-        public static final int text_view_comment_comment=0x7f05002d;
->>>>>>> f50bba51fae3269a5fd7dfe852dce376c37a3fcb
     }
     public static final class layout {
         public static final int activity_add_pin=0x7f030000;

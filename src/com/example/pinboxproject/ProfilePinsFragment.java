@@ -1,7 +1,6 @@
 package com.example.pinboxproject;
 
-import com.example.pinboxproject.adapters.StaggeredAdapter;
-import com.origamilabs.library.views.StaggeredGridView;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,17 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pinboxproject.adapters.StaggeredAdapter;
+import com.example.pinboxproject.entity.Pin;
+import com.origamilabs.library.views.StaggeredGridView;
+
 public class ProfilePinsFragment extends Fragment{
 	
 	private StaggeredAdapter adapter;
 	private static int screenWidth;
 	private static int columnNumber = 2;
 	
-	private Activity activity;
+//	private Activity activity;
+	ArrayList<Pin> pins;
 	
-	public ProfilePinsFragment(Activity activity) {
+	public ProfilePinsFragment(ArrayList<Pin> pins) {
 		// TODO Auto-generated constructor stub
-		this.activity = activity;
+		this.pins=pins;
 	}
 	
 	@Override
@@ -29,14 +33,14 @@ public class ProfilePinsFragment extends Fragment{
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.fragment_profile_pins, container, false);
 		
-		screenWidth = this.activity.getWindowManager().getDefaultDisplay().getWidth();
+		screenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
 		if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_PORTRAIT){
 			columnNumber = 2;
 		}
 		else columnNumber = 3;
 		
 		StaggeredGridView staggeredGrid = (StaggeredGridView)view.findViewById(R.id.profile_staggeredGridView);
-		adapter = new StaggeredAdapter(activity, screenWidth - 40, staggeredGrid.getColumnCount(),null);
+		adapter = new StaggeredAdapter(getActivity(), screenWidth - 40, columnNumber,pins);
 		staggeredGrid.setAdapter(adapter);
 		
 		return view;
