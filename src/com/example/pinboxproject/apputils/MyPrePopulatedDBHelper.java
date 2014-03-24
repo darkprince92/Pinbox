@@ -252,7 +252,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    		openDataBase();
 	    	}
 	    	SQLiteDatabase db=this.database;
-	    	String col[]={"CATEGORY_ID","LOCATION_NAME","LOCATION_ID"};
+	    	String col[]={"CATEGORY_ID","LOCATION_NAME","LOCATION_ID","DESCRIPTION","up_vote","down_vote","PINNING_TIME","USER_ID"};
 	    	Cursor c=db.query("pin_location", col, "USER_ID=" + userId, null, null, null,"PINNING_TIME DESC","0,20");
 	    	
 	    	
@@ -362,6 +362,19 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	long id=db.insert("pin_location", null, values);
 	    	System.out.println("last inserted id :"+id);
 	    	db.close();
+	    	return true;
+	    }
+	    public boolean insertAlbum(String title,String desc,String locs)
+	    {
+	    	SQLiteDatabase db=this.database;
+	    	ContentValues values = new ContentValues();
+	    	values.put("ALBUM_NAME", title);
+	    	values.put("USER_ID", Settings.loggedUser.getId());
+	    	values.put("ALBUM_DESC", desc);
+	    	values.put("LOCATION_ID", locs);
+	    	long id=db.insert("pin_album", null, values);
+	    	System.out.println("last inserted id :"+id);
+	    	
 	    	return true;
 	    }
 	    @Override

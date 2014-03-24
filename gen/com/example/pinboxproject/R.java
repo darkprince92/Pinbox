@@ -264,8 +264,9 @@ containing a value of this type.
         public static final int sample_5=0x7f020041;
         public static final int sample_6=0x7f020042;
         public static final int sample_7=0x7f020043;
-        public static final int tab_button_back=0x7f020044;
-        public static final int tab_button_normal=0x7f020045;
+        public static final int splash=0x7f020044;
+        public static final int tab_button_back=0x7f020045;
+        public static final int tab_button_normal=0x7f020046;
     }
     public static final class id {
         public static final int action_logout=0x7f050081;

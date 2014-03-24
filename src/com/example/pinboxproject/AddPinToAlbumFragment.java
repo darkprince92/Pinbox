@@ -10,6 +10,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.pinboxproject.adapters.AddPinToAlbumAdapter;
@@ -23,6 +24,10 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	Button buttonAddPin;
 	Activity activity;
 	AddPinToAlbumAdapter pinsAdapter;
+	
+	private PinHandler pinHandlerObj;
+	private String pinList;
+	
 	//ArrayList<IncidentComment> comments;
 	//CommentHandler commentHandler;
 	
@@ -48,6 +53,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	    View view = inflater.inflate(R.layout.add_pin_in_album_dialog_layoit, null);
 	    builder.setView(view).setTitle("Add pins to Album");
 	    
+	   
 	    
 	    buttonAddPin = (Button)view.findViewById(R.id.add_pin_to_album_add);
 	    buttonAddPin.setOnClickListener(new Button.OnClickListener() {
@@ -55,7 +61,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//addComment();
+				addAlbum();
 			}
 		});
 	    
@@ -67,14 +73,18 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	    return builder.create();
 	}
 	
+	void addAlbum()
+	{
+		
+	}
 	@Override
 	public void onAttach(Activity activity) {
 		// TODO Auto-generated method stub
 		super.onAttach(activity);
 		
-		/*if(activity instanceof CommentHandler){
-			commentHandler = (CommentHandler)activity;
-		}*/
+		if(activity instanceof PinHandler){
+			pinHandlerObj = (PinHandler)activity;
+		}
 	}
 	
 	@Override
@@ -85,11 +95,40 @@ public class AddPinToAlbumFragment extends DialogFragment{
 		
 	}
 	
-	/*public static interface CommentHandler{
+	public static interface PinHandler{
 		
-		public void getAddedComment(Comment comment);
+		public void getAddedPins(String pins);
 	}
-	
+	private void getAlbum()
+	{
+		pinHandlerObj.getAddedPins(pinList);
+	}
+	public void getPins(ArrayList<Boolean> pinCheckList)
+	{
+		String result="";
+		ArrayList<Integer> pin_ids=new ArrayList<Integer>();
+		for(int i=0;i<pinCheckList.size();i++)
+		{
+			if(pinCheckList.get(i).equals(true))
+			{
+				pin_ids.add(pins.get(i).getId());
+				
+				
+			}
+		}
+		if(pin_ids.size()>0)
+		{
+			result+=pin_ids.get(0);
+			for(int i=1;i<pin_ids.size();i++)
+			{
+				result+=","+pin_ids.get(i);
+			}
+		}
+		
+		pinList=result;
+//		System.out.println("got pins: "+result);
+	}
+	/*
 	private void addComment(){
 		String comment = textDescription.getText().toString();
 		//System.out.println("Comment in fragment: " + comment);

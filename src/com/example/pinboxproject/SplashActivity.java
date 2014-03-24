@@ -44,5 +44,6 @@ public class SplashActivity extends Activity {
 	{
 		mdb=new MyPrePopulatedDBHelper(this, "tik");
 		Settings.categories=mdb.getAllCats();
+		getActionBar().hide();
 	}
 }

@@ -158,7 +158,7 @@ public class MapActivity extends NavigationActivity implements LoaderCallbacks<C
 		return new MarkerOptions()
 					.position(myLocation)
 					.title(pin.getName())
-					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_pin));
+					.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_map_marker));
 
 				
 	}
