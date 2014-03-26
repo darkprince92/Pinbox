@@ -24,7 +24,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	Button buttonAddPin;
 	Activity activity;
 	AddPinToAlbumAdapter pinsAdapter;
-	
+	ArrayList<Boolean> pinSelected;
 	private PinHandler pinHandlerObj;
 	private String pinList;
 	
@@ -33,11 +33,13 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	
 	ArrayList<Pin> pins;
 	
-	public AddPinToAlbumFragment(Activity activity){
+	public AddPinToAlbumFragment(Activity activity,ArrayList<Boolean> selecteds){
 		this.activity = activity;
 		
 		MyPrePopulatedDBHelper dbHelper = new MyPrePopulatedDBHelper(activity, "tik");
 		pins = dbHelper.getUserPins(Settings.loggedUser.getId());
+		
+		this.pinSelected=selecteds;
 		//this.comments=c;
 	}
 	
@@ -67,7 +69,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 		});
 	    
 	    pinListView = (ListView)view.findViewById(R.id.add_pin_to_album_list);
-	    pinsAdapter = new AddPinToAlbumAdapter(activity, pins);
+	    pinsAdapter = new AddPinToAlbumAdapter(activity, pins,pinSelected);
 	    pinListView.setAdapter(pinsAdapter);
 	    
 	    // Add action buttons    
@@ -98,15 +100,16 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	
 	public static interface PinHandler{
 		
-		public void getAddedPins(String pins);
+		public void getAddedPins(String pins,ArrayList<Pin> wholePin);
 	}
 	private void getAlbum()
 	{
-		pinHandlerObj.getAddedPins(pinList);
+		pinHandlerObj.getAddedPins(pinList,pins);
 		this.dismiss();
 	}
 	public void getPins(ArrayList<Boolean> pinCheckList)
 	{
+		pinSelected=pinCheckList;
 		String result="";
 		ArrayList<Integer> pin_ids=new ArrayList<Integer>();
 		for(int i=0;i<pinCheckList.size();i++)

@@ -117,19 +117,9 @@ public class LoginActivity extends Activity {
 				}
 				user=new User(id, name, email);
 				Settings.loggedUser=user;
-				AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-				builder.setMessage("You are Successfully Logged In");
-				builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-						startActivity(intent);
-					}
-				});
-				AlertDialog dialog = builder.create();
-				dialog.show();
+				Toast.makeText(getApplicationContext(), "Successfully Logged in..", Toast.LENGTH_LONG).show();
+				Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+				startActivity(intent);
 			}
 			else if(status.equals("Wrong"))
 			{

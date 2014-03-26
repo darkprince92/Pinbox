@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.pinboxproject.AddPinToAlbumFragment.PinHandler;
 import com.example.pinboxproject.adapters.AddPinToAlbumAdapter.PinFilterer;
+import com.example.pinboxproject.adapters.GridPinAdapter;
 import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
 import com.example.pinboxproject.apputils.MyThread;
 import com.example.pinboxproject.entity.Pin;
@@ -42,7 +43,9 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	String title,desc,pinList;
 	private ArrayList<Pin> addedPinId;
 	private AddPinToAlbumFragment addPinDialog;
+	private GridPinAdapter gridPinAdapter;
 	ProgressDialog pd;
+	ArrayList<Boolean> selectedPins;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 		buttonAddPins = (Button)findViewById(R.id.create_album_button_app_pins);
 		buttonSave = (Button)findViewById(R.id.create_album_button_save);
 		
+		gridPins=(GridView)findViewById(R.id.create_album_grid_pins);
 		addedPinId = new ArrayList<Pin>();
 		
 		buttonAddPins.setOnClickListener(new OnClickListener() {
@@ -88,7 +92,7 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	}
 	
 	private void addPinToArray(){
-		addPinDialog = new AddPinToAlbumFragment(this);
+		addPinDialog = new AddPinToAlbumFragment(this,selectedPins);
 		addPinDialog.show(getSupportFragmentManager(), "Add Pin");
 	}
 	
@@ -100,7 +104,9 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	@Override
 	public void filterPin(ArrayList<Boolean> pinCheckList) {
 		// TODO Auto-generated method stub
+		selectedPins=pinCheckList;
 		addPinDialog.getPins(pinCheckList);
+		
 	}
 
 	private void getData()
@@ -131,9 +137,20 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 		mdh.insertAlbum(title, desc, pinList);
 	}
 	@Override
-	public void getAddedPins(String pins) {
+	public void getAddedPins(String pins,ArrayList<Pin> pinL) {
 		// TODO Auto-generated method stub
 		pinList=pins;
+		addedPinId=new ArrayList<Pin>();
+		for(int i=0;i<pinL.size();i++)
+		{
+			if(selectedPins.get(i))
+			{
+				addedPinId.add(pinL.get(i));
+			}
+		}
+		
+		gridPinAdapter=new GridPinAdapter(this, addedPinId);
+		gridPins.setAdapter(gridPinAdapter);
 		
 		
 	}

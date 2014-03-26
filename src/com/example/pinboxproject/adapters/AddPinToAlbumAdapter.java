@@ -26,11 +26,19 @@ public class AddPinToAlbumAdapter extends BaseAdapter{
 	private ArrayList<Pin> userPins;
 	private ArrayList<Boolean> pinCheck;
 	
-	public AddPinToAlbumAdapter(Activity activity, ArrayList<Pin> pins){
+	public AddPinToAlbumAdapter(Activity activity, ArrayList<Pin> pins,ArrayList<Boolean> pinCheck){
 		this.activity = activity;
 		this.userPins = pins;
-		pinCheck=new ArrayList<Boolean>();
-		init();
+		if(pinCheck!=null)
+		{
+			this.pinCheck = pinCheck;
+		}
+		else
+		{
+			this.pinCheck=new ArrayList<Boolean>();
+			init();
+		}
+		
 	}
 
 	@Override
@@ -90,7 +98,7 @@ public class AddPinToAlbumAdapter extends BaseAdapter{
 		pinTitle = (TextView)vi.findViewById(R.id.add_pin_to_album_text_title);
 		pinCategory = (TextView)vi.findViewById(R.id.add_pin_to_album_text_category);
 		tempCheck=checkBox;
-		System.out.println("pos: "+childPos+" status: "+pinCheck.get(childPos));
+//		System.out.println("pos: "+childPos+" status: "+pinCheck.get(childPos));
 		checkBox.setChecked(pinCheck.get(position));
 		checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
