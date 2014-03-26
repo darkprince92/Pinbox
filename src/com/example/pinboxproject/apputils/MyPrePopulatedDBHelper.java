@@ -403,7 +403,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
     	s += " OR location_address" + "'%" + str + "%'";
     	s += " OR district" + "'%" + str + "%'";
     	s += " OR thana" + "'%" + str + "%'";
-    	Cursor c=db.query("pin_location", col,  s , null, null, null,"PINNING_TIME DESC","0,50");
+    	Cursor c=db.query("pin_location", null,  s , null, null, null,"PINNING_TIME DESC","0,50");
     	
     	
     	if(c!=null && c.getCount()>0)

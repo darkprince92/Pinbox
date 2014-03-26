@@ -1,32 +1,28 @@
 package com.example.pinboxproject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
-import com.example.pinboxproject.adapters.NavigationListAdapter;
-
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.os.AsyncTask;
+import android.inputmethodservice.Keyboard.Key;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.view.KeyCharacterMap.KeyData;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
+
+import com.example.pinboxproject.adapters.NavigationListAdapter;
 
 public abstract class NavigationActivity extends FragmentActivity {
 	
@@ -41,6 +37,8 @@ public abstract class NavigationActivity extends FragmentActivity {
 	protected CharSequence appTitle;
 	protected CharSequence menuTitle;
 	protected ActionBarDrawerToggle mDrawerToggle;
+	
+	protected SearchView searchView;
 	
 	protected Handler handler;
 
@@ -57,7 +55,7 @@ public abstract class NavigationActivity extends FragmentActivity {
 		//Navigation Drawer Codes
 		appTitle = "PinBox";
 		menuTitle = "Menu";
-		
+						
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView)findViewById(R.id.left_drawer);
 		mDrawerLayout.setScrimColor(Color.TRANSPARENT);
@@ -88,8 +86,7 @@ public abstract class NavigationActivity extends FragmentActivity {
 					break;
 				case 5:
 					
-					break;
-					
+					break;					
 				}
 				
 			}
@@ -142,6 +139,10 @@ public abstract class NavigationActivity extends FragmentActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.navigation, menu);
+		
+		searchView = (SearchView) menu.findItem(R.id.search_view).getActionView();
+		String searchText = searchView.getQuery().toString();
+		Toast.makeText(this, searchText, Toast.LENGTH_SHORT).show();
 		createMenu();
 		
 		return true;
@@ -154,7 +155,7 @@ public abstract class NavigationActivity extends FragmentActivity {
 		}								
 		else {
 			switch (item.getItemId()) {
-				
+						
 			default:
 				return super.onOptionsItemSelected(item);
 			}

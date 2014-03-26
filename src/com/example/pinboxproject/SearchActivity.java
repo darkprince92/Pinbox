@@ -21,7 +21,7 @@ public class SearchActivity extends NavigationActivity {
 		pagerAdapter = new SearchPagerAdapter(getSupportFragmentManager(), this);
 		pager = (ViewPager)findViewById(R.id.search_pager);
 		pager.setAdapter(pagerAdapter);
-		
+				
 		String selectedCategory = "";
 		
 		Bundle bundle = getIntent().getExtras();
