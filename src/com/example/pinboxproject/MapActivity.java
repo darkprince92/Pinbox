@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.example.pinboxproject.apputils.MapSetup;
 import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
+import com.example.pinboxproject.apputils.PinCursorLoader;
 import com.example.pinboxproject.apputils.SimpleCursorLoader;
+import com.example.pinboxproject.apputils.Utils;
 import com.example.pinboxproject.entity.Category;
 import com.example.pinboxproject.entity.Location;
 import com.example.pinboxproject.entity.Pin;
@@ -200,82 +202,8 @@ public class MapActivity extends NavigationActivity implements LoaderCallbacks<C
 		}
 		return mdh;
 	}
-	public static final class DotCursorLoader extends SimpleCursorLoader 
-	{
-
-		private MyPrePopulatedDBHelper mHelper;
-
-		public DotCursorLoader(Context context, MyPrePopulatedDBHelper helper) 
-		{
-			super(context);
-			mHelper = helper;
-		}
-
-		@Override
-		public Cursor loadInBackground() {
-			Cursor cursor = null;
-			SQLiteDatabase db = mHelper.getDb();
-			
-			try {
-				String limitStr="0,"+5000;
-		    	String col[]={"LOCATION_NAME","LOCATION_ID","LATITUDE","LONGITUDE"};
-		    	String cols="pin_location.LOCATION_ID,LOCATION_NAME,LATITUDE,LONGITUDE,CATEGORY_NAME,DESCRIPTION,PINNING_TIME,up_vote,down_vote";
-		    	
-		    	String rawQuery="SELECT "+cols+" FROM pin_location INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID ORDER BY PINNING_TIME DESC LIMIT 0,8000";
-//		    	cursor=db.query("pin_location", col, null, null, null, null,"PINNING_TIME DESC",limitStr);
-		    	cursor=db.rawQuery(rawQuery, null);
-		    	cursor.moveToFirst();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-			if (cursor != null) {
-				cursor.getCount();
-			}
-			
-			return cursor;
-		}
-
-	}
-
-	private void cursorToList(Cursor c)
-	{
-		Cursor f=c;
-		allPins=new ArrayList<Pin>();
-		for(int i=0;i<c.getCount();i++)
-		{
-			Location loc;
-			Category cat;
-			Pin pin; 
-			
-			int id=f.getInt(f.getColumnIndex("LOCATION_ID"));
-			double lat=f.getDouble(f.getColumnIndex("LATITUDE"));
-			double lng=f.getDouble(f.getColumnIndex("LONGITUDE"));
-			
-			
-			loc=new Location(lat,lng,"","","");
-			
-			
-//			cat=getCat(catId);
-//			loc=getLocation(id);
-			
-			String name=f.getString(f.getColumnIndex("LOCATION_NAME"));
-			String desc=f.getString(f.getColumnIndex("DESCRIPTION"));
-			String pinTime=f.getString(f.getColumnIndex("PINNING_TIME"));
-			
-			String catName=f.getString(f.getColumnIndex("CATEGORY_NAME"));
-			cat=new Category(0, catName);
-			
-			
-			pin=new Pin(loc, name, desc, "admin", pinTime, cat, id, 0, 0);
-			allPins.add(pin);
-			f.moveToNext();
-			
-		}
-		
 	
-	}
-	
+
 		
 		
 	
@@ -288,14 +216,15 @@ public class MapActivity extends NavigationActivity implements LoaderCallbacks<C
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		// TODO Auto-generated method stub
 		pd=ProgressDialog.show(MapActivity.this,"","Loading Pins...",true,false);
-		return new DotCursorLoader(this, getHelper());
+		return new PinCursorLoader(this, getHelper(),"All");
 	}
 	@Override
 	public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
 		// TODO Auto-generated method stub
 		pd.dismiss();
+		allPins=Utils.cursorToPinList(arg1);
+		this.mdh.database.close();
 		
-		cursorToList(arg1);
 		System.out.println("Pins count "+allPins.size());
 		
 		mapPopulate();

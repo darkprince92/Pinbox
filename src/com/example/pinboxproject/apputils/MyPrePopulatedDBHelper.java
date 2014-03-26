@@ -341,7 +341,43 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 			
 	    	return pins;
 	    }
+	    public Cursor getLocationCursor(int limit,int userId,String where)
+	    {
+	    	SQLiteDatabase db=this.database;
+	    	String cols="pin_location.LOCATION_ID,pin_location.CATEGORY_ID,LOCATION_NAME,LATITUDE,LONGITUDE,CATEGORY_NAME,DESCRIPTION,PINNING_TIME,up_vote,down_vote";
+	    	String rawQuery="SELECT "+cols+" FROM pin_location INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID ";
+	    	if(userId!=0)
+	    	{
+	    		rawQuery+=" WHERE USER_ID="+userId;
+	    		if(where!=null)
+	    		{
+	    			rawQuery+=" AND "+where;
+	    		}	
+	    	}
+	    	else
+	    	{
+	    		if(where!=null)
+	    		{
+	    			rawQuery+=" WHERE "+where;
+	    		}
+	    	}
+	    	
+	    	rawQuery+=" ORDER BY PINNING_TIME DESC LIMIT 0,"+limit;
+	    	System.out.println(rawQuery);
+	    	Cursor c=db.rawQuery(rawQuery, null);
+	    	c.moveToFirst();
+	    	return c;
+	    }
 	    
+	    public Cursor getUserAlbums()
+	    {
+	    	Cursor c;
+	    	SQLiteDatabase db=this.database;
+	    	
+	    	c=db.query("pin_album", null, "USER_ID="+Settings.loggedUser.getId(), null, null, null, null);
+	    	c.moveToFirst();
+	    	return c;
+	    }
 	    public boolean insertPin(Pin p)
 	    {
 	    	SQLiteDatabase db=this.database;

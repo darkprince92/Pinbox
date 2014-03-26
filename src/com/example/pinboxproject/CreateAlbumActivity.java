@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.pinboxproject.AddPinToAlbumFragment.PinHandler;
 import com.example.pinboxproject.adapters.AddPinToAlbumAdapter.PinFilterer;
+import com.example.pinboxproject.adapters.GridPinAdapter;
 import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
 import com.example.pinboxproject.apputils.MyThread;
 import com.example.pinboxproject.entity.Pin;
@@ -41,7 +43,9 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	String title,desc,pinList;
 	private ArrayList<Pin> addedPinId;
 	private AddPinToAlbumFragment addPinDialog;
+	private GridPinAdapter gridPinAdapter;
 	ProgressDialog pd;
+	ArrayList<Boolean> selectedPins;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,7 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 		buttonAddPins = (Button)findViewById(R.id.create_album_button_app_pins);
 		buttonSave = (Button)findViewById(R.id.create_album_button_save);
 		
+		gridPins=(GridView)findViewById(R.id.create_album_grid_pins);
 		addedPinId = new ArrayList<Pin>();
 		
 		buttonAddPins.setOnClickListener(new OnClickListener() {
@@ -87,19 +92,21 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	}
 	
 	private void addPinToArray(){
-		addPinDialog = new AddPinToAlbumFragment(this);
+		addPinDialog = new AddPinToAlbumFragment(this,selectedPins);
 		addPinDialog.show(getSupportFragmentManager(), "Add Pin");
 	}
 	
 	
 	private void save(){
-		
+		sendData();
 	}
 
 	@Override
 	public void filterPin(ArrayList<Boolean> pinCheckList) {
 		// TODO Auto-generated method stub
+		selectedPins=pinCheckList;
 		addPinDialog.getPins(pinCheckList);
+		
 	}
 
 	private void getData()
@@ -110,8 +117,10 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	}
 	private void sendData()
 	{
+		getData();
 		insertAlbumLocally();
-		pd=ProgressDialog.show(getApplicationContext(), "Creating album", null);
+		
+		pd=ProgressDialog.show(CreateAlbumActivity.this, "Creating album", null);
 		ArrayList<NameValuePair> dataToSend=new ArrayList<NameValuePair>();
 		dataToSend.add(new BasicNameValuePair("user_id", ""+Settings.loggedUser.getId()));
 		dataToSend.add(new BasicNameValuePair("locs", ""+pinList));
@@ -128,11 +137,22 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 		mdh.insertAlbum(title, desc, pinList);
 	}
 	@Override
-	public void getAddedPins(String pins) {
+	public void getAddedPins(String pins,ArrayList<Pin> pinL) {
 		// TODO Auto-generated method stub
 		pinList=pins;
-		getData();
-		sendData();
+		addedPinId=new ArrayList<Pin>();
+		for(int i=0;i<pinL.size();i++)
+		{
+			if(selectedPins.get(i))
+			{
+				addedPinId.add(pinL.get(i));
+			}
+		}
+		
+		gridPinAdapter=new GridPinAdapter(this, addedPinId);
+		gridPins.setAdapter(gridPinAdapter);
+		
+		
 	}
 	
 	Handler handler=new Handler()
@@ -144,14 +164,20 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 			Bundle b=msg.getData();
 			String status=null;
 			System.out.println(b.toString());
-			String response=b.getString("response");
-			if(response.equals("success"))
-			{
-				Toast.makeText(getApplicationContext(), "Album Added successfully", Toast.LENGTH_LONG).show();
-				Intent intent=new Intent(CreateAlbumActivity.this,UserProfileActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
+			try {
+				responseObj=new JSONObject(b.getString("response"));
+				if(responseObj.getString("response_type").equals("success"))
+				{
+					Toast.makeText(getApplicationContext(), "Album Added successfully", Toast.LENGTH_LONG).show();
+					Intent intent=new Intent(CreateAlbumActivity.this,UserProfileActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			
 		}
 	};
 }
