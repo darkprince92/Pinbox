@@ -166,7 +166,7 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 			System.out.println(b.toString());
 			try {
 				responseObj=new JSONObject(b.getString("response"));
-				if(responseObj.getString("response").equals("success"))
+				if(responseObj.getString("response_type").equals("success"))
 				{
 					Toast.makeText(getApplicationContext(), "Album Added successfully", Toast.LENGTH_LONG).show();
 					Intent intent=new Intent(CreateAlbumActivity.this,UserProfileActivity.class);

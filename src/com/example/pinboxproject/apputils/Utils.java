@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import android.database.Cursor;
 
+import com.example.pinboxproject.entity.Album;
 import com.example.pinboxproject.entity.Category;
 import com.example.pinboxproject.entity.Location;
 import com.example.pinboxproject.entity.Pin;
@@ -31,6 +32,7 @@ public class Utils {
 	public static ArrayList<Pin> cursorToPinList(Cursor c)
 	{
 		Cursor f=c;
+		System.out.println("Pin Count: "+c.getCount());
 		ArrayList<Pin> allPins=new ArrayList<Pin>();
 		for(int i=0;i<c.getCount();i++)
 		{
@@ -65,5 +67,25 @@ public class Utils {
 		}
 		return allPins;
 	}
-
+	
+	public static ArrayList<Album> cursorToAlbums(Cursor c)
+	{
+		ArrayList<Album> albums=new ArrayList<Album>();
+		Cursor f=c;
+		
+		for(int i=0;i<c.getCount();i++)
+		{
+			Album a;
+			String title=f.getString(f.getColumnIndex("ALBUM_NAME"));
+			String desc=f.getString(f.getColumnIndex("ALBUM_DESC"));
+			String locs=f.getString(f.getColumnIndex("LOCATION_ID"));
+			int userId=f.getInt(f.getColumnIndex("USER_ID"));
+			
+			a=new Album(userId, title, desc, locs);
+			albums.add(a);
+			f.moveToNext();
+		}
+		f.close();
+		return albums;
+	}
 }

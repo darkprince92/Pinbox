@@ -370,8 +370,18 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	}
 	    	
 	    	rawQuery+=" ORDER BY PINNING_TIME DESC LIMIT 0,"+limit;
-	    	
+	    	System.out.println(rawQuery);
 	    	Cursor c=db.rawQuery(rawQuery, null);
+	    	c.moveToFirst();
+	    	return c;
+	    }
+	    
+	    public Cursor getUserAlbums()
+	    {
+	    	Cursor c;
+	    	SQLiteDatabase db=this.database;
+	    	
+	    	c=db.query("pin_album", null, "USER_ID="+Settings.loggedUser.getId(), null, null, null, null);
 	    	c.moveToFirst();
 	    	return c;
 	    }

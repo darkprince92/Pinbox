@@ -9,7 +9,7 @@ public class PinCursorLoader extends SimpleCursorLoader {
 
 	private MyPrePopulatedDBHelper mHelper;
 	private String type;
-	
+	private String where;
 	
 	public PinCursorLoader(Context context,MyPrePopulatedDBHelper mHelper,String type) {
 		super(context);
@@ -17,6 +17,14 @@ public class PinCursorLoader extends SimpleCursorLoader {
 		this.mHelper=mHelper;
 		this.type=type;
 		
+	}
+	
+	public PinCursorLoader(Context context,MyPrePopulatedDBHelper mHelper,String type,String where)
+	{
+		super(context);
+		this.mHelper=mHelper;
+		this.type=type;
+		this.where=where;
 	}
 
 	@Override
@@ -35,6 +43,14 @@ public class PinCursorLoader extends SimpleCursorLoader {
 		else if(this.type.equals("Home"))
 		{
 			c=mHelper.getLocationCursor(100, 0, null);
+		}
+		else if(this.type.equals("UserAlbums"))
+		{
+			c=mHelper.getUserAlbums();
+		}
+		else if(this.type.equals("UserAlbum"))
+		{
+			c=mHelper.getLocationCursor(10, 0, where);
 		}
 		
 		return c;

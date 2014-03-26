@@ -19,7 +19,8 @@
             android:text="Album Title"
             android:textColor="@color/text_primary"
             android:textSize="32dp"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="15dp"
+            android:id="@+id/album_details_text_title" />
         
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
