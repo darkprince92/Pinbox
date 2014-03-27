@@ -38,9 +38,9 @@ public class StaggeredAdapter extends BaseAdapter{
 		int i;
 		imageThumbList = new ArrayList<Bitmap>();
 		
-		Bitmap image = BitmapFactory.decodeResource(activity.getResources(), mThumbIds[0]);
+		Bitmap image = BitmapFactory.decodeResource(activity.getResources(), R.drawable.no_image_1);
 		imageThumbList.add(ThumbnailConverter.CreateThumbnail(image, screenWidth/columnNum)) ;
-		image = BitmapFactory.decodeResource(activity.getResources(), mThumbIds[3]);
+		image = BitmapFactory.decodeResource(activity.getResources(), R.drawable.no_image_2);
 		imageThumbList.add(ThumbnailConverter.CreateThumbnail(image, screenWidth/columnNum)) ;
 		
 	}

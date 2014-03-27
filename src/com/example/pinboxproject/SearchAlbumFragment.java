@@ -2,11 +2,13 @@ package com.example.pinboxproject;
 
 import java.util.ArrayList;
 
-import com.example.pinboxproject.adapters.SearchAlbumAdapter;
-
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +16,28 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-public class SearchAlbumFragment extends Fragment{
+import com.example.pinboxproject.adapters.SearchAlbumAdapter;
+import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
+import com.example.pinboxproject.apputils.PinCursorLoader;
+import com.example.pinboxproject.apputils.Utils;
+import com.example.pinboxproject.entity.Album;
+
+public class SearchAlbumFragment extends Fragment {
 	
 	private ListView albumListView;
 	private Spinner sortSpinner;
-	private Activity activity;
+	private FragmentActivity activity;
 	private ArrayList<String> sortSpinnerList;
+	private String searchTag;
+	private ArrayList<Album> albums;
+	MyPrePopulatedDBHelper mdh;
 	
-	public SearchAlbumFragment(Activity activity) {
+	public SearchAlbumFragment(Activity activity,String searchTag) {
 		// TODO Auto-generated constructor stub
-		this.activity = activity;
+		this.activity = (FragmentActivity)activity;
+		this.searchTag=searchTag;
 		spinnerItemInit();
+		
 	}
 	
 	@Override
@@ -41,12 +54,19 @@ public class SearchAlbumFragment extends Fragment{
 	    
 	    //<-------list view--------->
 	    albumListView = (ListView)view.findViewById(R.id.search_album_list);
-	    SearchAlbumAdapter albumAdapter = new SearchAlbumAdapter(activity);
-	    albumListView.setAdapter(albumAdapter);
 	    
+	    pullData();
 	    return view;
 	}
 	
+	void pullData()
+	{
+		mdh=new MyPrePopulatedDBHelper(activity, "tik");
+		albums=new ArrayList<Album>();
+		albums=Utils.cursorToAlbums(mdh.searchAlbumCursor(this.searchTag));
+		SearchAlbumAdapter albumAdapter = new SearchAlbumAdapter(activity,albums);
+	    albumListView.setAdapter(albumAdapter);
+	}
 	private void spinnerItemInit(){
 		sortSpinnerList = new ArrayList<String>();
 		sortSpinnerList.add("Date Added");
@@ -55,4 +75,6 @@ public class SearchAlbumFragment extends Fragment{
 		sortSpinnerList.add("Comments");
 		
 	}
+
+	
 }

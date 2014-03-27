@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.pinboxproject.adapters.PagerAdapter;
 import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
@@ -24,6 +25,7 @@ public class UserProfileActivity extends NavigationActivity {
 	private ViewPager pager;
 	private PagerAdapter pagerAdapter;
 	MyPrePopulatedDBHelper mdh;
+	TextView textviewProfileName,textviewProfileEmail;
 	ArrayList<Pin> userPins;
 	
 	private static final int SELF_USER_MODE = 0;
@@ -61,7 +63,11 @@ public class UserProfileActivity extends NavigationActivity {
 		buttonSelectAlbums = (Button)findViewById(R.id.profile_button_album);
 		buttonEditProfile = (Button)findViewById(R.id.profile_button_edit_profile);
 		buttonAddAlbum = (Button)findViewById(R.id.profile_button_add_album);
+		textviewProfileEmail=(TextView)findViewById(R.id.profile_text_email);
+		textviewProfileName=(TextView)findViewById(R.id.profile_text_username);
 		
+		textviewProfileEmail.setText(Settings.loggedUser.getEmail());
+		textviewProfileName.setText(Settings.loggedUser.getUserName());
 		if(userMode == SELF_USER_MODE){
 			View view = (View)findViewById(R.id.profile_view_self);
 			view.setVisibility(View.VISIBLE);

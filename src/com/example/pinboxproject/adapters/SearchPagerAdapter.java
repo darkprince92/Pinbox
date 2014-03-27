@@ -9,6 +9,7 @@ import com.example.pinboxproject.SearchUserFragment;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -22,14 +23,16 @@ public class SearchPagerAdapter extends FragmentPagerAdapter{
 	private Fragment mapFragment;
 	
 	private Activity activity;
+	String searchTag;
 
-	public SearchPagerAdapter(FragmentManager fm, Activity activity) {
+	public SearchPagerAdapter(FragmentManager fm, Activity activity,String searchTag) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 		this.activity = activity;
+		this.searchTag=searchTag;
 		
-		pinListFragment = new SearchPinListFragment(activity);
-		albumFragment = new SearchAlbumFragment(activity);
+		pinListFragment = new SearchPinListFragment((FragmentActivity)activity,this.searchTag);
+		albumFragment = new SearchAlbumFragment(activity,this.searchTag);
 		userFragment = new SearchUserFragment(activity);
 		mapFragment = new SearchMapFragment(activity);
 		
