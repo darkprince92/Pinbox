@@ -47,6 +47,8 @@
     
     <style name="AppActionBar" parent="@android:style/Widget.ActionBar">
         <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textColorHint">@color/text_tertiary</item>
     </style>
 
 </resources>

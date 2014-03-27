@@ -114,7 +114,7 @@ public class UserProfileActivity extends NavigationActivity {
 		userPins=mdh.getUserPins(Settings.loggedUser.getId());
 	}
 	private void selectFragment(int pos){
-		pager.setCurrentItem(pos);		
+		pager.setCurrentItem(pos);
 	}
 
 }

@@ -33,22 +33,7 @@ public class MainActivity extends NavigationActivity implements LoaderCallbacks<
 	@Override
 	protected void createView() {
 		// TODO Auto-generated method stub
-		setContentView(R.layout.activity_main);
-		
-		
-		buttonSearch = (Button)findViewById(R.id.home_button_search);
-		buttonSearch.setOnClickListener(new Button.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-				Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);		
-				
-				MainActivity.this.startActivity(intent);
-			}
-		});
-	
+		setContentView(R.layout.activity_main);	
 		
 		buttonMap = (Button)findViewById(R.id.home_button_map);
 		buttonMap.setOnClickListener(new Button.OnClickListener() {
