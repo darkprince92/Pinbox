@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import android.R.raw;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -112,6 +113,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	{
 	    		openDataBase();
 	    	}
+	    	System.out.println("In catagories pull");
 	    	SQLiteDatabase db=this.database;
 	    	String col[]={"CATEGORY_ID","CATEGORY_NAME"};
 	    	Cursor c=db.query("pin_category", col, null, null, null, null,null);
@@ -369,6 +371,34 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	return c;
 	    }
 	    
+	    public Cursor searchLocationCursor(String tag)
+	    {
+	    	SQLiteDatabase db=this.database;
+	    	String rawQuery="SELECT * FROM pin_location INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID  where ";
+	    	rawQuery+="LOCATION_NAME LIKE '%"+tag+"%' ";
+	    	rawQuery+=" OR ";
+	    	rawQuery+="location_address LIKE '%"+tag+"%' ";
+	    	rawQuery+=" OR ";
+	    	rawQuery+="district LIKE '%"+tag+"%' ";
+	    	rawQuery+=" OR ";
+	    	rawQuery+="thana LIKE '%"+tag+"%' ";
+	    	rawQuery+=" OR ";
+	    	rawQuery+="CATEGORY_NAME LIKE '%"+tag+"%' ";
+	    	rawQuery+=" ORDER BY PINNING_TIME DESC LIMIT 0,100";
+    	    System.out.println(rawQuery);
+	    			
+	    	Cursor c=db.rawQuery(rawQuery, null);
+	    	c.moveToFirst();
+	    	return c;
+	    }
+	    public Cursor searchAlbumCursor(String tag)
+	    {
+	    	SQLiteDatabase db=this.database;
+	    	
+	    	Cursor c=db.query("pin_album", null, "ALBUM_NAME LIKE '%"+tag+"%'", null, null, null, null);
+	    	c.moveToFirst();
+	    	return c;
+	    }
 	    public Cursor getUserAlbums()
 	    {
 	    	Cursor c;

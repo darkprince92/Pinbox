@@ -6,6 +6,7 @@ import com.example.pinboxproject.R;
 import com.example.pinboxproject.R.id;
 import com.example.pinboxproject.R.layout;
 import com.example.pinboxproject.adapters.SearchPinListAdapter.PinData;
+import com.example.pinboxproject.entity.Album;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,24 +20,25 @@ import android.widget.TextView;
 
 public class SearchAlbumAdapter extends BaseAdapter{
 	
-	private ArrayList<AlbumData> albumData;
+	private ArrayList<Album> albums;
 	private Activity activity;
 	
-	public SearchAlbumAdapter(Activity activity) {
+	public SearchAlbumAdapter(Activity activity,ArrayList<Album> albums) {
 		// TODO Auto-generated constructor stub
 		this.activity = activity;
+		this.albums=albums;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 10;
+		return albums.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return position;
+		return albums.get(position);
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class SearchAlbumAdapter extends BaseAdapter{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
-ViewHolder viewHolder;
+		ViewHolder viewHolder;
 		
 		if(convertView == null){
 			//<-----With ViewHolder---->
@@ -58,7 +60,7 @@ ViewHolder viewHolder;
 			viewHolder = new ViewHolder();
 			viewHolder.imageView = (ImageView)convertView.findViewById(R.id.search_album_image);
 			viewHolder.textTitle = (TextView)convertView.findViewById(R.id.search_album_text_title);
-			viewHolder.textAddress = (TextView)convertView.findViewById(R.id.search_album_text_address);
+//			viewHolder.textAddress = (TextView)convertView.findViewById(R.id.sea);
 			
 			convertView.setTag(viewHolder);
 			
@@ -66,6 +68,8 @@ ViewHolder viewHolder;
 			viewHolder = (ViewHolder)convertView.getTag();
 		}
 		
+		viewHolder.textTitle.setText(albums.get(position).getTitle());
+//		viewHolder.textAddress.setText(albums.get(position).getUser_id());
 		return convertView;
 	}
 	

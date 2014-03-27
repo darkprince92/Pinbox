@@ -20,7 +20,7 @@ public class SearchActivity extends NavigationActivity {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_search);
 		
-		pagerAdapter = new SearchPagerAdapter(getSupportFragmentManager(), this);
+		pagerAdapter = new SearchPagerAdapter(getSupportFragmentManager(), this,"Test");
 		pager = (ViewPager)findViewById(R.id.search_pager);
 		pager.setAdapter(pagerAdapter);
 				

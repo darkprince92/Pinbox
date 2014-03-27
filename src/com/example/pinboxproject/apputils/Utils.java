@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.database.Cursor;
 
 import com.example.pinboxproject.entity.Album;
@@ -32,14 +33,19 @@ public class Utils {
 	public static ArrayList<Pin> cursorToPinList(Cursor c)
 	{
 		Cursor f=c;
-		System.out.println("Pin Count: "+c.getCount());
+//		c.close();
+		
+		int l=f.getCount();
+		f.moveToFirst();
+//		System.out.println("Pin Count: "+c.getCount());
 		ArrayList<Pin> allPins=new ArrayList<Pin>();
-		for(int i=0;i<c.getCount();i++)
+		for(int i=0;i<l;i++)
 		{
 			Location loc;
 			Category cat;
 			Pin pin; 
 			
+//			System.out.println(i);
 			int id=f.getInt(f.getColumnIndex("LOCATION_ID"));
 			double lat=f.getDouble(f.getColumnIndex("LATITUDE"));
 			double lng=f.getDouble(f.getColumnIndex("LONGITUDE"));
@@ -65,6 +71,7 @@ public class Utils {
 			f.moveToNext();
 			
 		}
+//		f.close();
 		return allPins;
 	}
 	
@@ -73,7 +80,9 @@ public class Utils {
 		ArrayList<Album> albums=new ArrayList<Album>();
 		Cursor f=c;
 		
-		for(int i=0;i<c.getCount();i++)
+		System.out.println("Row count "+c.getCount()+" Column Count: "+c.getColumnCount());
+		f.moveToFirst();
+		for(int i=0;i<f.getCount();i++)
 		{
 			Album a;
 			String title=f.getString(f.getColumnIndex("ALBUM_NAME"));

@@ -114,6 +114,7 @@ public class MainActivity extends NavigationActivity implements LoaderCallbacks<
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		// TODO Auto-generated method stub
+		pullData();
 		return new PinCursorLoader(this, mdh,"Home");
 	}
 
@@ -122,7 +123,7 @@ public class MainActivity extends NavigationActivity implements LoaderCallbacks<
 	public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
 		// TODO Auto-generated method stub
 		pins=Utils.cursorToPinList(arg1);
-		
+//		arg1.close();
 		for(int i=0;i<pins.size();i++)
 		{
 			System.out.println(pins.get(i).toString());

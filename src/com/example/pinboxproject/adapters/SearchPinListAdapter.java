@@ -6,6 +6,7 @@ import com.example.pinboxproject.R;
 import com.example.pinboxproject.R.id;
 import com.example.pinboxproject.R.layout;
 import com.example.pinboxproject.apputils.*;
+import com.example.pinboxproject.entity.Pin;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,12 +20,14 @@ import android.widget.TextView;
 
 public class SearchPinListAdapter extends BaseAdapter {
 	
-	private ArrayList<PinData> pinData;
+	private ArrayList<Pin> pins;
 	private Activity activity;
 	
-	public SearchPinListAdapter(Activity activity) {
+	
+	public SearchPinListAdapter(Activity activity,ArrayList<Pin> pins) {
 		// TODO Auto-generated constructor stub
 		this.activity = activity;
+		this.pins=pins;
 		//this.pinData = pinData;
 	}	
 
@@ -32,20 +35,20 @@ public class SearchPinListAdapter extends BaseAdapter {
 	public int getCount() {
 		// TODO Auto-generated method stub
 		//return pinData.size();
-		return 10;
+		return pins.size();
 	}
 
 	@Override
 	public Object getItem(int arg0) {
 		// TODO Auto-generated method stub
 		//return pinData.get(arg0);
-		return arg0;
+		return pins.get(arg0);
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return position;
+		return pins.get(position).getId();
 	}
 
 	@Override
@@ -69,6 +72,9 @@ public class SearchPinListAdapter extends BaseAdapter {
 		}else{			
 			viewHolder = (ViewHolder)convertView.getTag();
 		}
+		viewHolder.textTitle.setText(pins.get(position).getName());
+		viewHolder.textCategory.setText(pins.get(position).getCat().getCatName());
+		viewHolder.textAddress.setText(pins.get(position).getLoc().getDistrict());
 		
 		return convertView;
 	}

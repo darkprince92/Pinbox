@@ -256,17 +256,19 @@ containing a value of this type.
         public static final int ic_transport=0x7f020039;
         public static final int ic_users_dark=0x7f02003a;
         public static final int login=0x7f02003b;
-        public static final int sample_0=0x7f02003c;
-        public static final int sample_1=0x7f02003d;
-        public static final int sample_2=0x7f02003e;
-        public static final int sample_3=0x7f02003f;
-        public static final int sample_4=0x7f020040;
-        public static final int sample_5=0x7f020041;
-        public static final int sample_6=0x7f020042;
-        public static final int sample_7=0x7f020043;
-        public static final int splash=0x7f020044;
-        public static final int tab_button_back=0x7f020045;
-        public static final int tab_button_normal=0x7f020046;
+        public static final int no_image_1=0x7f02003c;
+        public static final int no_image_2=0x7f02003d;
+        public static final int sample_0=0x7f02003e;
+        public static final int sample_1=0x7f02003f;
+        public static final int sample_2=0x7f020040;
+        public static final int sample_3=0x7f020041;
+        public static final int sample_4=0x7f020042;
+        public static final int sample_5=0x7f020043;
+        public static final int sample_6=0x7f020044;
+        public static final int sample_7=0x7f020045;
+        public static final int splash=0x7f020046;
+        public static final int tab_button_back=0x7f020047;
+        public static final int tab_button_normal=0x7f020048;
     }
     public static final class id {
         public static final int action_logout=0x7f060084;
@@ -466,6 +468,7 @@ containing a value of this type.
         public static final int user_profile=0x7f0a000c;
     }
     public static final class string {
+<<<<<<< HEAD
         public static final int action_settings=0x7f070016;
         public static final int app_name=0x7f070015;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -492,6 +495,20 @@ containing a value of this type.
          */
         public static final int auth_client_using_bad_version_title=0x7f07000f;
         public static final int comment_lorem=0x7f070020;
+=======
+        public static final int action_settings=0x7f060016;
+        public static final int app_name=0x7f060015;
+        /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
+         */
+        public static final int auth_client_availability_notification_title=0x7f06000f;
+        /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
+         */
+        public static final int auth_client_play_services_err_notification_msg=0x7f060010;
+        /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
+         */
+        public static final int auth_client_requested_by_msg=0x7f060011;
+        public static final int comment_lorem=0x7f060020;
+>>>>>>> f6a64476533b572743560d90bff550278963b97a
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -546,6 +563,7 @@ containing a value of this type.
         public static final int common_signin_button_text=0x7f07000d;
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
+<<<<<<< HEAD
         public static final int common_signin_button_text_long=0x7f07000e;
         public static final int drawer_close=0x7f07001a;
         public static final int drawer_open=0x7f070019;
@@ -565,6 +583,38 @@ containing a value of this type.
         public static final int title_activity_sign_up=0x7f070023;
         public static final int title_activity_sing_up=0x7f070024;
         public static final int title_activity_user_profile=0x7f070021;
+=======
+        public static final int common_signin_button_text_long=0x7f06000e;
+        public static final int drawer_close=0x7f06001a;
+        public static final int drawer_open=0x7f060019;
+        public static final int hello_world=0x7f060017;
+        /**  Location client code resources (prefix with location_client) 
+
+        Begin strings for location.reporting
+    
+
+        Some InactiveReason names.  See more in OneUp/package/location/res/values/strings.xml
+    
+         */
+        public static final int location_client_ulr_inactive_age_under_13=0x7f060012;
+        public static final int location_client_ulr_inactive_age_unknown=0x7f060013;
+        public static final int location_client_ulr_inactive_unknown_restriction=0x7f060014;
+        public static final int lorem_ipsum=0x7f06001f;
+        public static final int title_activity_add_pin=0x7f060026;
+        public static final int title_activity_album_details=0x7f060022;
+        public static final int title_activity_app_pin=0x7f060025;
+        public static final int title_activity_category=0x7f060029;
+        public static final int title_activity_create_album=0x7f060027;
+        public static final int title_activity_edit_profile=0x7f060028;
+        public static final int title_activity_login=0x7f06001b;
+        public static final int title_activity_map=0x7f06001d;
+        public static final int title_activity_navigation=0x7f060018;
+        public static final int title_activity_pin_details=0x7f06001e;
+        public static final int title_activity_search=0x7f06001c;
+        public static final int title_activity_sign_up=0x7f060023;
+        public static final int title_activity_sing_up=0x7f060024;
+        public static final int title_activity_user_profile=0x7f060021;
+>>>>>>> f6a64476533b572743560d90bff550278963b97a
     }
     public static final class style {
         public static final int AppActionBar=0x7f090005;
