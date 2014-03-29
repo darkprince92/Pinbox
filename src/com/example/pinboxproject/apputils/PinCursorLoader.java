@@ -44,13 +44,13 @@ public class PinCursorLoader extends SimpleCursorLoader {
 		{
 			c=mHelper.getLocationCursor(100, 0, null);
 		}
-		else if(this.type.equals("UserAlbums"))
+		else if(this.type.equals("CurrentUserAlbums"))
 		{
-			c=mHelper.getUserAlbums();
+			c=mHelper.getUserAlbums(Settings.loggedUser.getId());
 		}
 		else if(this.type.equals("UserAlbum"))
 		{
-			c=mHelper.getLocationCursor(10, 0, where);
+			c=mHelper.getLocationCursor(10, Settings.loggedUser.getId(), where);
 		}
 		else if(this.type.equals("SearchPin"))
 		{

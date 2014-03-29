@@ -4,6 +4,7 @@ package com.example.pinboxproject;
 import java.util.ArrayList;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,11 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.pinboxproject.adapters.SearchPinListAdapter;
 import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
@@ -36,6 +37,7 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 	private ArrayList<String> sortSpinnerList;
 	private ArrayList<String> categorytSpinnerList;
 	ArrayList<Pin> pins;
+	ArrayList<Pin> selectedPins;
 	private String searchTag;
 	ProgressDialog pd;
 	MyPrePopulatedDBHelper mdh;
@@ -75,7 +77,7 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 				{
 					if(pins!=null)
 					{
-						ArrayList<Pin> selectedPins=new ArrayList<Pin>();
+						selectedPins=new ArrayList<Pin>();
 						for(int i=0;i<pins.size();i++)
 						{
 							if(pins.get(i).getCat().getId()==arg2)
@@ -92,6 +94,8 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 				{
 					if(pins!=null)
 					{
+						selectedPins=new ArrayList<Pin>();
+						selectedPins=pins;
 						SearchPinListAdapter pinAdapter = new SearchPinListAdapter(activity,pins);
 					    pinListView.setAdapter(pinAdapter);
 					}
@@ -110,6 +114,18 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 		});	    
 	    //<-------list view--------->
 	    pinListView = (ListView)view.findViewById(R.id.search_pin_list);
+	    pinListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				// TODO Auto-generated method stub
+				Pin p=selectedPins.get(arg2);
+				Intent intent=new Intent(activity,PinDetailsActivity.class);
+				intent.putExtra("pin_data",p);
+				startActivity(intent);
+				
+			}
+		});
 	    
 	    activity.getSupportLoaderManager().initLoader(0, null, this);
 	    return view;
@@ -149,6 +165,7 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 		arg1.close();
 		this.mdh.database.close();
 		pd.dismiss();
+		selectedPins=pins;
 		SearchPinListAdapter pinAdapter = new SearchPinListAdapter(activity,pins);
 	    pinListView.setAdapter(pinAdapter);
 	}

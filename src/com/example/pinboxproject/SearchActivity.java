@@ -19,8 +19,10 @@ public class SearchActivity extends NavigationActivity {
 	protected void createView() {
 		// TODO Auto-generated method stub
 		setContentView(R.layout.activity_search);
+		handleIntent(getIntent());
 		
-		pagerAdapter = new SearchPagerAdapter(getSupportFragmentManager(), this,"Test");
+		
+		pagerAdapter = new SearchPagerAdapter(getSupportFragmentManager(), this,searchText);
 		pager = (ViewPager)findViewById(R.id.search_pager);
 		pager.setAdapter(pagerAdapter);
 				
@@ -32,7 +34,7 @@ public class SearchActivity extends NavigationActivity {
 		}
 		
 		Toast.makeText(this, "category: " + selectedCategory, Toast.LENGTH_SHORT).show();
-		handleIntent(getIntent());
+		
 	}
 
 	@Override

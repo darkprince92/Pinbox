@@ -83,7 +83,7 @@ public class ProfileAlbumsFragment extends Fragment implements LoaderCallbacks<C
 	public Loader<Cursor> onCreateLoader(int arg0,
 			Bundle arg1) {
 		// TODO Auto-generated method stub
-		return new PinCursorLoader(activity, mdh, "UserAlbums");
+		return new PinCursorLoader(activity, mdh, "CurrentUserAlbums");
 	}
 
 	@Override

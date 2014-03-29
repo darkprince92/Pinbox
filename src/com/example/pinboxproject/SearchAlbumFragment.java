@@ -3,22 +3,21 @@ package com.example.pinboxproject;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.database.Cursor;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.pinboxproject.adapters.SearchAlbumAdapter;
 import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
-import com.example.pinboxproject.apputils.PinCursorLoader;
 import com.example.pinboxproject.apputils.Utils;
 import com.example.pinboxproject.entity.Album;
 
@@ -58,7 +57,7 @@ public class SearchAlbumFragment extends Fragment {
 	    pullData();
 	    return view;
 	}
-	
+	//Pull Data from database and populating list
 	void pullData()
 	{
 		mdh=new MyPrePopulatedDBHelper(activity, "tik");
@@ -66,6 +65,19 @@ public class SearchAlbumFragment extends Fragment {
 		albums=Utils.cursorToAlbums(mdh.searchAlbumCursor(this.searchTag));
 		SearchAlbumAdapter albumAdapter = new SearchAlbumAdapter(activity,albums);
 	    albumListView.setAdapter(albumAdapter);
+	    
+	    albumListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,long arg3) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(activity,AlbumDetailsActivity.class);
+				intent.putExtra("album",albums.get(arg2));
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				activity.startActivity(intent);
+				
+			}
+		});
 	}
 	private void spinnerItemInit(){
 		sortSpinnerList = new ArrayList<String>();

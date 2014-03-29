@@ -11,6 +11,7 @@ import com.example.pinboxproject.entity.Album;
 import com.example.pinboxproject.entity.Category;
 import com.example.pinboxproject.entity.Location;
 import com.example.pinboxproject.entity.Pin;
+import com.example.pinboxproject.entity.User;
 
 public class Utils {
 	public static void CopyStream(InputStream is, OutputStream os)
@@ -61,12 +62,14 @@ public class Utils {
 			String desc=f.getString(f.getColumnIndex("DESCRIPTION"));
 			String pinTime=f.getString(f.getColumnIndex("PINNING_TIME"));
 			
+			String uName=f.getString(f.getColumnIndex("USER_NAME"));
+			
 			String catName=f.getString(f.getColumnIndex("CATEGORY_NAME"));
 			int catId=f.getInt(f.getColumnIndex("CATEGORY_ID"));
 			cat=new Category(catId, catName);
 			
 			
-			pin=new Pin(loc, name, desc, "admin", pinTime, cat, id, 0, 0);
+			pin=new Pin(loc, name, desc, uName, pinTime, cat, id, 0, 0);
 			allPins.add(pin);
 			f.moveToNext();
 			
@@ -96,5 +99,23 @@ public class Utils {
 		}
 		f.close();
 		return albums;
+	}
+	
+	public static ArrayList<User> cursorToUsers(Cursor c)
+	{
+		ArrayList<User> users=new ArrayList<User>();
+		Cursor f=c;
+		f.moveToFirst();
+		for(int i=0;i<f.getCount();i++)
+		{
+			String userName=f.getString(f.getColumnIndex("USER_NAME"));
+			int userId=f.getInt(f.getColumnIndex("USER_ID"));
+			String email=f.getString(f.getColumnIndex("EMAIL"));
+			User u=new User(userId, userName, email);
+			users.add(u);
+			f.moveToNext();
+		}
+		f.close();
+		return users;
 	}
 }

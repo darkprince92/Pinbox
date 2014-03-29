@@ -3,8 +3,12 @@ package com.example.pinboxproject;
 import java.util.ArrayList;
 
 import com.example.pinboxproject.adapters.SearchUserAdapter;
+import com.example.pinboxproject.apputils.MyPrePopulatedDBHelper;
+import com.example.pinboxproject.apputils.Utils;
+import com.example.pinboxproject.entity.User;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,10 +26,12 @@ public class SearchUserFragment extends Fragment {
 	private Activity activity;
 	private ArrayList<String> locationSpinnerList;
 	private ArrayList<String> categorytSpinnerList;
-	
-	public SearchUserFragment(Activity activity) {
+	private ArrayList<User> users;
+	String searchTag;
+	public SearchUserFragment(Activity activity,String tag) {
 		// TODO Auto-generated constructor stub
 		this.activity = activity;
+		this.searchTag=tag;
 		spinnerItemInit();
 	}
 	
@@ -49,7 +55,8 @@ public class SearchUserFragment extends Fragment {
 	    
 	    //<-------list view--------->
 	    pinListView = (ListView)view.findViewById(R.id.search_user_list);
-	    SearchUserAdapter userAdapter = new SearchUserAdapter(activity);
+	    pullData();
+	    SearchUserAdapter userAdapter = new SearchUserAdapter(activity,users);
 	    pinListView.setAdapter(userAdapter);
 	    
 	    return view;
@@ -65,12 +72,13 @@ public class SearchUserFragment extends Fragment {
 		locationSpinnerList.add("Borishal");
 		locationSpinnerList.add("Rajshahi");
 		
-		/*categorytSpinnerList = new ArrayList<String>();
-		categorytSpinnerList.add("All");
-		categorytSpinnerList.add("Restaurant");
-		categorytSpinnerList.add("Bank");
-		categorytSpinnerList.add("Education");
-		categorytSpinnerList.add("Hospital");*/
+		
+	}
+	private void pullData()
+	{
+		MyPrePopulatedDBHelper mdh=new MyPrePopulatedDBHelper(activity, "tik");
+		Cursor c=mdh.searchUserCursor(searchTag);
+		users=Utils.cursorToUsers(c);
 	}
 
 }

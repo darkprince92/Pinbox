@@ -346,11 +346,11 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    public Cursor getLocationCursor(int limit,int userId,String where)
 	    {
 	    	SQLiteDatabase db=this.database;
-	    	String cols="pin_location.LOCATION_ID,pin_location.CATEGORY_ID,LOCATION_NAME,LATITUDE,LONGITUDE,CATEGORY_NAME,DESCRIPTION,PINNING_TIME,up_vote,down_vote";
-	    	String rawQuery="SELECT "+cols+" FROM pin_location INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID ";
+	    	String cols="pin_location.LOCATION_ID,USER_NAME,pin_location.CATEGORY_ID,LOCATION_NAME,LATITUDE,LONGITUDE,CATEGORY_NAME,DESCRIPTION,PINNING_TIME,up_vote,down_vote";
+	    	String rawQuery="SELECT "+cols+" FROM pin_location,pin_user INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID WHERE pin_location.USER_ID=pin_user.USER_ID ";
 	    	if(userId!=0)
 	    	{
-	    		rawQuery+=" WHERE USER_ID="+userId;
+	    		rawQuery+=" AND pin_location.USER_ID="+userId;
 	    		if(where!=null)
 	    		{
 	    			rawQuery+=" AND "+where;
@@ -360,7 +360,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	{
 	    		if(where!=null)
 	    		{
-	    			rawQuery+=" WHERE "+where;
+	    			rawQuery+=" AND "+where;
 	    		}
 	    	}
 	    	
@@ -374,7 +374,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    public Cursor searchLocationCursor(String tag)
 	    {
 	    	SQLiteDatabase db=this.database;
-	    	String rawQuery="SELECT * FROM pin_location INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID  where ";
+	    	String rawQuery="SELECT * FROM pin_location,pin_user INNER JOIN pin_category on pin_location.CATEGORY_ID=pin_category.CATEGORY_ID  where pin_location.USER_ID=pin_user.USER_ID AND ";
 	    	rawQuery+="LOCATION_NAME LIKE '%"+tag+"%' ";
 	    	rawQuery+=" OR ";
 	    	rawQuery+="location_address LIKE '%"+tag+"%' ";
@@ -399,12 +399,20 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    	c.moveToFirst();
 	    	return c;
 	    }
-	    public Cursor getUserAlbums()
+	    
+	    public Cursor getUserAlbums(int userId)
 	    {
 	    	Cursor c;
 	    	SQLiteDatabase db=this.database;
 	    	
-	    	c=db.query("pin_album", null, "USER_ID="+Settings.loggedUser.getId(), null, null, null, null);
+	    	c=db.query("pin_album", null, "USER_ID="+userId, null, null, null, null);
+	    	c.moveToFirst();
+	    	return c;
+	    }
+	    public Cursor searchUserCursor(String tag)
+	    {
+	    	SQLiteDatabase db=this.database;
+	    	Cursor c=db.query("pin_user", null, "USER_NAME LIKE '%"+tag+"%'", null, null, null, null);
 	    	c.moveToFirst();
 	    	return c;
 	    }
@@ -412,7 +420,7 @@ public class MyPrePopulatedDBHelper extends SQLiteOpenHelper{
 	    {
 	    	SQLiteDatabase db=this.database;
 	    	ContentValues values = new ContentValues();
-	    	values.put("DESCRIPTION", p.getDescription());
+	    	values.put("DESCRIPTION", p.getDescription()); 
 	    	values.put("LOCATION_NAME", p.getName());
 	    	values.put("USER_ID", Settings.loggedUser.getId());
 	    	values.put("CATEGORY_ID", p.getCat().getId());

@@ -95,7 +95,7 @@ public class MainActivity extends NavigationActivity implements LoaderCallbacks<
 				Intent intent=new Intent(MainActivity.this,PinDetailsActivity.class);
 				intent.putExtra("pin_data",pins.get(position));
 				startActivity(intent);
-				Toast.makeText(getApplicationContext(), "Position "+position, Toast.LENGTH_LONG).show();
+//				Toast.makeText(getApplicationContext(), "Position "+position, Toast.LENGTH_LONG).show();
 			}
 		});
 	}

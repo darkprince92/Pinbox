@@ -7,6 +7,7 @@ import com.example.pinboxproject.R;
 import com.example.pinboxproject.R.id;
 import com.example.pinboxproject.R.layout;
 import com.example.pinboxproject.adapters.SearchPinListAdapter.PinData;
+import com.example.pinboxproject.entity.User;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,18 +21,19 @@ import android.widget.TextView;
 
 public class SearchUserAdapter extends BaseAdapter {
 	
-	private ArrayList<UserData> userData;
+	private ArrayList<User> users;
 	private Activity activity;
 	
-	public SearchUserAdapter(Activity activity) {
+	public SearchUserAdapter(Activity activity,ArrayList<User> users) {
 		// TODO Auto-generated constructor stub
 		this.activity = activity;
+		this.users=users;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 10;
+		return users.size();
 	}
 
 	@Override
@@ -66,6 +68,8 @@ public class SearchUserAdapter extends BaseAdapter {
 		}else{			
 			viewHolder = (ViewHolder)convertView.getTag();
 		}
+		viewHolder.textUsername.setText(users.get(position).getUserName());
+		viewHolder.textEmail.setText(users.get(position).getEmail());
 		
 		return convertView;
 	}

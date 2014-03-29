@@ -33,7 +33,7 @@ public class SearchPagerAdapter extends FragmentPagerAdapter{
 		
 		pinListFragment = new SearchPinListFragment((FragmentActivity)activity,this.searchTag);
 		albumFragment = new SearchAlbumFragment(activity,this.searchTag);
-		userFragment = new SearchUserFragment(activity);
+		userFragment = new SearchUserFragment(activity,this.searchTag); 
 		mapFragment = new SearchMapFragment(activity);
 		
 		/*fragments = new ArrayList<Fragment>();
