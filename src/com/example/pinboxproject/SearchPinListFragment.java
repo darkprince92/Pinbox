@@ -48,6 +48,8 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 		this.searchTag=searchTag;
 		spinnerItemInit();
 	}
+	public SearchPinListFragment()
+	{}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -141,6 +143,13 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 		categorytSpinnerList = new ArrayList<String>();
 		
 		categorytSpinnerList.add("All");
+		System.out.println("categorie status : "+Settings.categories);
+		if(Settings.categories==null)
+		{
+			mdh= MyPrePopulatedDBHelper.getInstance(activity, "tik");
+			Settings.categories=mdh.getAllCats();
+		}
+			
 		for(int i=0;i<Settings.categories.size();i++)
 		{
 			categorytSpinnerList.add(Settings.categories.get(i).getCatName());
@@ -151,8 +160,8 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
 		// TODO Auto-generated method stub
-		mdh=new MyPrePopulatedDBHelper(activity, "tik");
-		pd=ProgressDialog.show(activity, null, "searching...");
+		mdh=MyPrePopulatedDBHelper.getInstance(activity, "tik");
+		pd=ProgressDialog.show(activity, null, "searching..."); 
 		return new PinCursorLoader(activity, mdh, "SearchPin",searchTag);
 		
 	}
@@ -160,10 +169,13 @@ public class SearchPinListFragment extends Fragment implements LoaderCallbacks<C
 	@Override
 	public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
 		// TODO Auto-generated method stub
-		pins=new ArrayList<Pin>();
+		pins=new ArrayList<Pin>(); 
 		pins=Utils.cursorToPinList(arg1);
-		arg1.close();
-		this.mdh.database.close();
+//		if(arg1 != null && !arg1.isClosed()){
+//			arg1.close();
+//	    }
+		
+		
 		pd.dismiss();
 		selectedPins=pins;
 		SearchPinListAdapter pinAdapter = new SearchPinListAdapter(activity,pins);

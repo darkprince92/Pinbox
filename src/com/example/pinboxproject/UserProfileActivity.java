@@ -116,7 +116,7 @@ public class UserProfileActivity extends NavigationActivity {
 	
 	private void pullData()
 	{
-		mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		mdh=MyPrePopulatedDBHelper.getInstance(getApplicationContext(), "tik");
 		userPins=mdh.getUserPins(Settings.loggedUser.getId());
 	}
 	private void selectFragment(int pos){

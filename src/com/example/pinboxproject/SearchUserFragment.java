@@ -76,7 +76,7 @@ public class SearchUserFragment extends Fragment {
 	}
 	private void pullData()
 	{
-		MyPrePopulatedDBHelper mdh=new MyPrePopulatedDBHelper(activity, "tik");
+		MyPrePopulatedDBHelper mdh=MyPrePopulatedDBHelper.getInstance(activity, "tik");
 		Cursor c=mdh.searchUserCursor(searchTag);
 		users=Utils.cursorToUsers(c);
 	}

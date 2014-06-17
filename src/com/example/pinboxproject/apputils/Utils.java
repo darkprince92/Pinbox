@@ -74,7 +74,12 @@ public class Utils {
 			f.moveToNext();
 			
 		}
-//		f.close();
+//		if(c != null && !c.isClosed()){
+//	        c.close();
+//	    }
+//		if(f != null && !f.isClosed()){
+//	        f.close();
+//	    }
 		return allPins;
 	}
 	
@@ -82,6 +87,7 @@ public class Utils {
 	{
 		ArrayList<Album> albums=new ArrayList<Album>();
 		Cursor f=c;
+		
 		
 		System.out.println("Row count "+c.getCount()+" Column Count: "+c.getColumnCount());
 		f.moveToFirst();
@@ -97,7 +103,12 @@ public class Utils {
 			albums.add(a);
 			f.moveToNext();
 		}
-		f.close();
+		if(c != null && !c.isClosed()){
+	        c.close();
+	    }
+		if(f != null && !f.isClosed()){
+	        f.close();
+	    }
 		return albums;
 	}
 	
@@ -105,6 +116,7 @@ public class Utils {
 	{
 		ArrayList<User> users=new ArrayList<User>();
 		Cursor f=c;
+		
 		f.moveToFirst();
 		for(int i=0;i<f.getCount();i++)
 		{
@@ -115,7 +127,12 @@ public class Utils {
 			users.add(u);
 			f.moveToNext();
 		}
-		f.close();
+		if(c != null && !c.isClosed()){
+	        c.close();
+	    }
+		if(f != null && !f.isClosed()){
+	        f.close();
+	    }
 		return users;
 	}
 }

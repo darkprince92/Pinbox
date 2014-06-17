@@ -101,7 +101,7 @@ public class MainActivity extends NavigationActivity implements LoaderCallbacks<
 	}
 	private void pullData()
 	{
-		mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		mdh=MyPrePopulatedDBHelper.getInstance(getApplicationContext(), "tik");
 		
 	}
 	@Override
@@ -123,12 +123,15 @@ public class MainActivity extends NavigationActivity implements LoaderCallbacks<
 	public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
 		// TODO Auto-generated method stub
 		pins=Utils.cursorToPinList(arg1);
+		if(arg1 != null && !arg1.isClosed()){
+			arg1.close();
+	    } 
 //		arg1.close();
 		for(int i=0;i<pins.size();i++)
 		{
 			System.out.println(pins.get(i).toString());
 		}
-		this.mdh.database.close();
+//		this.mdh.database.close();
 		init();
 		
 	}

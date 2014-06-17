@@ -147,7 +147,7 @@ public class AddPinActivity extends FragmentActivity implements AddPinFragment1.
 		Date date = new Date();
 		String dateStr=dateFormat.format(date);
 		p=new Pin(loc, title, desc, Settings.loggedUser.getId()+"", dateStr, c, 0, 0);
-		MyPrePopulatedDBHelper mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		MyPrePopulatedDBHelper mdh=MyPrePopulatedDBHelper.getInstance(getApplicationContext(), "tik");
 		mdh.insertPin(p);
 		
 		

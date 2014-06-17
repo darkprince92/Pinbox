@@ -36,7 +36,7 @@ public class AddPinToAlbumFragment extends DialogFragment{
 	public AddPinToAlbumFragment(Activity activity,ArrayList<Boolean> selecteds){
 		this.activity = activity;
 		
-		MyPrePopulatedDBHelper dbHelper = new MyPrePopulatedDBHelper(activity, "tik");
+		MyPrePopulatedDBHelper dbHelper = MyPrePopulatedDBHelper.getInstance(activity, "tik");
 		pins = dbHelper.getUserPins(Settings.loggedUser.getId());
 		
 		this.pinSelected=selecteds;

@@ -60,7 +60,7 @@ public class SearchAlbumFragment extends Fragment {
 	//Pull Data from database and populating list
 	void pullData()
 	{
-		mdh=new MyPrePopulatedDBHelper(activity, "tik");
+		mdh=MyPrePopulatedDBHelper.getInstance(activity, "tik");
 		albums=new ArrayList<Album>();
 		albums=Utils.cursorToAlbums(mdh.searchAlbumCursor(this.searchTag));
 		SearchAlbumAdapter albumAdapter = new SearchAlbumAdapter(activity,albums);

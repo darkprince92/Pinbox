@@ -36,7 +36,7 @@ public class ProfileAlbumsFragment extends Fragment implements LoaderCallbacks<C
 		// TODO Auto-generated constructor stub
 		this.activity = activity;
 		
-		mdh=new MyPrePopulatedDBHelper(activity, "tik");
+		mdh=MyPrePopulatedDBHelper.getInstance(activity, "tik");
 	}
 	
 	@Override

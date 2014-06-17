@@ -198,7 +198,7 @@ public class MapActivity extends NavigationActivity implements LoaderCallbacks<C
 	
 	private MyPrePopulatedDBHelper getHelper() {
 		if (mdh == null) {
-			mdh = new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+			mdh = MyPrePopulatedDBHelper.getInstance(getApplicationContext(), "tik");
 		}
 		return mdh;
 	}

@@ -38,7 +38,7 @@ public class AlbumDetailsActivity extends NavigationActivity implements LoaderCa
 		Bundle b = this.getIntent().getExtras();
 		a=this.getIntent().getParcelableExtra("album");
 		
-		mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		mdh=MyPrePopulatedDBHelper.getInstance(getApplicationContext(), "tik");
 		
 		screenWidth = this.getWindowManager().getDefaultDisplay().getWidth();
 		if(getResources().getConfiguration().orientation == getResources().getConfiguration().ORIENTATION_PORTRAIT){

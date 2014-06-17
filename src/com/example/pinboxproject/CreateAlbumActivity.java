@@ -133,7 +133,7 @@ public class CreateAlbumActivity extends FragmentActivity implements PinFilterer
 	}
 	private void insertAlbumLocally()
 	{
-		MyPrePopulatedDBHelper mdh=new MyPrePopulatedDBHelper(getApplicationContext(), "tik");
+		MyPrePopulatedDBHelper mdh=MyPrePopulatedDBHelper.getInstance(getApplicationContext(), "tik");
 		mdh.insertAlbum(title, desc, pinList);
 	}
 	@Override
